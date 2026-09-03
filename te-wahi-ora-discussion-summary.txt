@@ -1,0 +1,59 @@
+TE WĀHI ORA WEBSITE — DISCUSSION SUMMARY
+Date: 3 September 2026
+Project: New WordPress site (not a rebuild of the old theme). Client supplies copy and photos; branding/logo handled elsewhere. SEO package declined.
+
+------------------------------------------------------------------------------
+1. LIVE SITE (AUDIT)
+------------------------------------------------------------------------------
+Already WordPress (tewahiora.co.nz). Women-only charitable retreat at 129 Marine Parade North, Piha. Meals included. Optional counselling, massage, Reiki. Free monthly Check In (also called Check Up). Themed weekends. Donations, 400×$10, Wynsome Fund, vouchers, volunteers.
+
+The public header has eight items: Home, Accommodation, Events, Extra Offerings, Retreat Rates, Support Us, Contact Us & Book, Bev’s Blog. Most of these have dropdowns (Home nests About Us and the story pages; Accommodation is a single link).
+
+Problems: overlapping pages (rooms vs rates; many donate URLs; two Check In URLs; gift voucher listed under both Rates and Support); outdated events and years (20/25/35 years; 2015 vision; 2016–17 donate quotes); CHECK IN vs CHECK UP; two phone numbers (09 8128566 vs 09 812 8775); two emails; booking form missing rooms; no card payments; sitemap XML 500; homepage H1 is a phone number; long spiritual essays before practical facts; circular-icon calendar; Covid/cheque leftovers; crisis story on donate page.
+
+Strengths to keep: women for women; “a place to belong to while moving into wholeness”; named rooms and GST prices; day stay $60; subsidy $140; meals as care; Check In timetable; Our Name story; volunteer quote; small capacity (about 6–8 for themed weekends).
+
+------------------------------------------------------------------------------
+2. CLIENT BRIEF (PDF)
+------------------------------------------------------------------------------
+Positioning: charitable retreat, rest, reconnect, wholeness; Check In; workshops; extras; subsidies; group/facilitator use if values align. Audiences: women seeking rest/support; Check In/programme guests; donors/referrers/funders (NZ and overseas); aligned groups.
+
+Goals: clarity; purpose/values; easier stay/pricing/subsidy/events/Check In/enquiry; much stronger donate path (one-off, recurring, international); simpler for staff to update; still feel like Te Wāhi Ora (warm, welcoming, safe, history). Form checkbox “lead generation” really means enquiries + donations, not a marketing funnel.
+
+Proposed nav (starting point only): Home | Stay | What We Offer | About | Support Us | Contact.
+Function to discuss: complex forms, events calendar/tickets, online booking (later). Want: donate UX, Mailchimp, routed enquiries. Copy and images from them. Inspiration: Women’s Healing Sanctuary (AU) — pathways, not their look. Brief uses macron: Te Wāhi Ora; live site often does not.
+
+Gaps in brief: Bev vs public voice; Check In naming; crisis-service boundary; donor recognition format; who updates CMS; photos; practical booking process.
+
+------------------------------------------------------------------------------
+3. FEEL (AGREED DIRECTION)
+------------------------------------------------------------------------------
+Not: heavy Māori visual identity (name story kept, not the theme); not two moods (no “cool despair / get out of my life”); not a spa or generic wellness; not a pulpit of spiritual essays on the homepage.
+
+Yes: the site should feel a little like going there — house AND people AND nature. Three feeling words to test with the client: SAFE (explore yourself, safe to share), COMMUNITY (women helping women), GROWTH (develop). Healing matters and should appear on the home page, but not as the first thing that grabs attention.
+
+Open wording debate (for client email):
+- Safety can sound like a refuge; alternatives: welcome, ease.
+- Community vs connection (connection = sharing; community = also donors/volunteers).
+- Growth can sound corporate/self-help; wholeness is already their word (tagline/name).
+- Rest and place (Piha) are important but better as how the feeling is delivered, not a fourth slogan.
+- Suggested sets to offer them: (1) safety, community, growth (2) safety, connection, wholeness (3) rest, belonging, growth.
+
+“Porch not pulpit” meant: invite and make the next step clear, don’t preach first. Drop the metaphor; use the triad instead.
+
+------------------------------------------------------------------------------
+4. USER GROUPS
+------------------------------------------------------------------------------
+(1) Women booking, including price and sponsored options
+(2) People giving time or money
+(3) Gifters — close to (1)
+(4) People wanting to use the facilities
+
+Discussion: gifters are the same product as stays but a different user (often not the guest); also overlap with giving (pay it forward). Group hire is real but small — don’t equal-weight in nav. Missing if only four: Check In as a first visit that is not a booked night; people referring someone else; staff using WordPress.
+
+Mentally: guests (stay + Check In), supporters (money/time), gifters (bridge), groups (quiet), staff (CMS). Only the first two shout.
+
+------------------------------------------------------------------------------
+5. STILL TO DISCUSS (LATER)
+------------------------------------------------------------------------------
+Content arrangement in detail; function (forms, donate, calendar, Mailchimp, booking later); visual/wireframe seeds; what to kick out page by page; visual references; design directions.
