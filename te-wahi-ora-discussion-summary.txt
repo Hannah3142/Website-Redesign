@@ -59,3 +59,5 @@ Mentally: guests (stay + Check In), supporters (money/time), gifters (bridge), g
 Content arrangement in detail; function (forms, donate, calendar, Mailchimp, booking later); visual/wireframe seeds; what to kick out page by page; visual references; design directions.
 
 Working sitemap (4 Sep 2026): clickable-sitemaps/v4 — Home, Stay, What we offer, About, News, Contact, plus Book and Support buttons.
+
+Ask the client: live booking vs request; What we offer vs What’s on as the programmes label.

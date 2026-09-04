@@ -1,3 +1,4 @@
+/* Event titles as they appear in the live nav / cards. */
 var EVENTS = [
   { id: "event-grief", title: "Supporting Grief 2026" },
   { id: "event-writing", title: "Women’s Writing Weekends 2026" },
