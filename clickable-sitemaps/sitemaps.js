@@ -10,12 +10,12 @@ var EVENT_HEADINGS = [
 
 var EVENTS = [
   { id: "event-grief", title: "Supporting Grief 2026" },
-  { id: "event-writing", title: "Women’s Writing Weekends 2026" },
+  { id: "event-writing", title: "Women's Writing Weekends 2026" },
   { id: "event-nature", title: "Nature Immersion Weekends 2026" },
   { id: "event-moving-on", title: "Moving On Weekend Retreat" },
-  { id: "event-finances", title: "A Woman’s Finances" },
+  { id: "event-finances", title: "A Woman's Finances" },
   { id: "event-sewing", title: "[Creative Sewing Weekend]" },
-  { id: "event-surfing", title: "[Women’s Surfing Weekends]" },
+  { id: "event-surfing", title: "[Women's Surfing Weekends]" },
   { id: "event-roots", title: "[Exploring Our Roots]" }
 ];
 
@@ -44,7 +44,7 @@ var FOOTER_LINKS_BASE = [
   { label: "Cancellation policy", page: "cancellation" },
   { label: "Do you need help?", page: "need-help" },
   { label: "[Links]", page: "links" },
-  { label: "[Bev’s Blog]", href: "https://beverly-holt.tewahiora.co.nz/" },
+  { label: "[Bev's Blog]", href: "https://beverly-holt.tewahiora.co.nz/" },
   { label: "[Many Paths Many Voices]", href: "https://writers.tewahiora.co.nz/" }
 ];
 
@@ -57,14 +57,14 @@ var SITEMAPS = {
         { label: "Stay (whole page)", page: "stay" },
         { label: "Rooms and prices", page: "stay", hash: "rooms" },
         { label: "Food", page: "stay", hash: "food" },
-        { label: "While you’re here", page: "stay", hash: "extras" },
+        { label: "While you're here", page: "stay", hash: "extras" },
         { label: "About Piha", page: "stay", hash: "piha" },
         { label: "Gift a stay", page: "stay", hash: "gift" },
         { label: "Book the location / groups", page: "stay", hash: "groups" },
         { label: "Cancellation", page: "stay", hash: "cancellation" }
       ]},
-      { type: "dropdown", label: "What’s on", page: "whats-on", items: [
-        { label: "What’s on", page: "whats-on" },
+      { type: "dropdown", label: "What's on", page: "whats-on", items: [
+        { label: "What's on", page: "whats-on" },
         { label: "Check In", page: "check-in" },
         { label: "Calendar", page: "calendar" }
       ].concat(eventLinks()) },
@@ -79,7 +79,7 @@ var SITEMAPS = {
       ]},
       { type: "dropdown", label: "Support us", page: "support", items: [
         { label: "How to give", page: "support" },
-        { label: "400 × $10", page: "four-hundred" },
+        { label: "400 x $10", page: "four-hundred" },
         { label: "The Wynsome Fund", page: "wynsome" },
         { label: "Give time", page: "give-time" },
         { label: "Bequests", page: "bequests" },
@@ -99,9 +99,9 @@ var SITEMAPS = {
           "Healing / rest / community (second band, not the top)",
           "Rooms from $X, meals in, subsidy in one line",
           "Next Check In (date + free, RSVP)",
-          "This month’s retreat weekend",
+          "This month's retreat weekend",
           "Gift a stay",
-          "Support strip: 400×$10 + Wynsome",
+          "Support strip: 400x$10 + Wynsome",
           "One guest quote"
         ]
       },
@@ -114,7 +114,7 @@ var SITEMAPS = {
           "Subsidised stays",
           "Day stay",
           "Food",
-          "While you’re here (counselling, massage, Reiki, yoga, walks)",
+          "While you're here (counselling, massage, Reiki, yoga, walks)",
           "About Piha",
           "Gift a stay",
           "Book the location — groups and facilitators",
@@ -123,7 +123,7 @@ var SITEMAPS = {
         ]
       },
       "whats-on": {
-        title: "What’s on",
+        title: "What's on",
         headings: [
           "Next Check In",
           "Upcoming retreat weekends",
@@ -172,7 +172,7 @@ var SITEMAPS = {
           "Why give",
           "One-off donation (NZ bank + international)",
           "Give a Little",
-          "Monthly 400×$10 (link)",
+          "Monthly 400x$10 (link)",
           "Wynsome Fund (link)",
           "Gift a stay (same voucher content)",
           "Volunteer / donated time (link)"
@@ -188,7 +188,7 @@ var SITEMAPS = {
           "Tax receipt"
         ]
       },
-      "four-hundred": { title: "400 × $10", headings: ["What it pays for", "How to set up $10 / month", "Tax receipt"] },
+      "four-hundred": { title: "400 x $10", headings: ["What it pays for", "How to set up $10 / month", "Tax receipt"] },
       wynsome: { title: "The Wynsome Fund", headings: ["Who Wynsome was", "Sponsored stays", "How to give to this fund"] },
       "give-time": { title: "Give time", headings: ["Volunteer programme", "Donated time", "How to offer"] },
       bequests: { title: "Bequests", headings: ["Leaving a gift in a will", "Contact"] },
@@ -244,7 +244,7 @@ var SITEMAPS = {
           "Or come any time for a rest stay → Stay",
           "One photo of the house",
           "Donate / volunteer line",
-          "Short FAQ: who it’s for (healing here, not a sermon)"
+          "Short FAQ: who it's for (healing here, not a sermon)"
         ]
       },
       "this-month": {
@@ -278,7 +278,7 @@ var SITEMAPS = {
         title: "Stay",
         headings: [
           "Rooms and prices (merged)",
-          "What’s included (food + extras)",
+          "What's included (food + extras)",
           "About Piha",
           "Gift a stay",
           "Hire the house (groups)",
@@ -318,7 +318,7 @@ var SITEMAPS = {
         title: "Donate",
         headings: [
           "One-off",
-          "Recurring 400×$10",
+          "Recurring 400x$10",
           "Wynsome",
           "Bequests",
           "Give a Little",
@@ -331,7 +331,7 @@ var SITEMAPS = {
       cancellation: { title: "Cancellation policy", headings: ["Policy headings"] },
       "need-help": { title: "Do you need help?", headings: ["Crisis vs retreat", "Helplines"] },
       links: { title: "[Links]", headings: ["External links"] },
-      "four-hundred": { title: "400 × $10", headings: ["Monthly giving"] },
+      "four-hundred": { title: "400 x $10", headings: ["Monthly giving"] },
       wynsome: { title: "The Wynsome Fund", headings: ["Sponsored stays"] },
       "give-time": { title: "Give time", headings: ["Volunteer", "Donated time"] },
       bequests: { title: "Bequests", headings: ["Wills"] },
@@ -355,7 +355,7 @@ var SITEMAPS = {
       { type: "dropdown", label: "Help", page: "help", items: [
         { label: "Help (whole hub)", page: "help" },
         { label: "Donate money", page: "help", hash: "money" },
-        { label: "400 × $10", page: "help", hash: "monthly" },
+        { label: "400 x $10", page: "help", hash: "monthly" },
         { label: "Wynsome Fund", page: "help", hash: "wynsome" },
         { label: "Bequests", page: "help", hash: "bequests" },
         { label: "Gift a stay", page: "help", hash: "gift" },
@@ -397,7 +397,7 @@ var SITEMAPS = {
         title: "Help",
         headings: [
           "How to donate (all methods + Give a Little)",
-          "Monthly giving — 400 × $10",
+          "Monthly giving — 400 x $10",
           "The Wynsome Fund",
           "Bequests",
           "Gift a stay (same voucher as Come)",
