@@ -1,12 +1,55 @@
+var LOREM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae nisl vitae erat dictum tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.";
+var LOREM_LONG = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere cubilia Curae.";
+
 var EVENTS = [
-  { id: "event-grief", title: "Supporting Grief", when: "14–16 August 2026", blurb: "Time to rest, walk, and be held in loss — with other women, not alone with it." },
-  { id: "event-writing", title: "Women’s Writing Weekends", when: "16–18 October 2026", blurb: "Space to write, share, and hear your own voice again. Three weekends across the year." },
-  { id: "event-nature", title: "Nature Immersion", when: "6–8 November 2026", blurb: "Walks, ritual, rest and the black sand — a weekend of belonging to the land." },
-  { id: "event-moving-on", title: "Moving On", when: "13–15 March 2026", blurb: "For a threshold: honour what has been, and step forward without rushing." },
-  { id: "event-finances", title: "A Woman’s Finances", when: "12–14 June 2026", blurb: "Money, confidence and clarity, workshopped gently in Piha." },
-  { id: "event-sewing", title: "Creative Sewing Weekend", when: "Dates TBC", blurb: "[Older / to confirm] Sew, talk, and let meals appear." },
-  { id: "event-surfing", title: "Women’s Surfing Weekends", when: "Past programme", blurb: "[Archive] Ocean confidence and beginner-friendly surf." },
-  { id: "event-roots", title: "Exploring Our Roots", when: "Past programme", blurb: "[Archive] A weekend with Piha’s wild ground." }
+  {
+    id: "event-writing",
+    title: "Women’s Writing Weekends",
+    when: "16–18 October 2026",
+    img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80",
+    blurb: "Three weekends a year to write, share, and hear your own voice again. Next: 16–18 October 2026.",
+    who: "Women who want time to write — beginners and long-time writers. You do not need a project already underway.",
+    happens: "Quiet writing time, optional sharing, and meals at the table. Evenings are unhurried. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    place: "Te Wāhi Ora, 129 Marine Parade North, Piha. Same house and meals as any other stay.",
+    cost: "Usual stay rates from $180 a night including meals, or $60 for the day. Ask if you need a subsidy."
+  },
+  {
+    id: "event-nature",
+    title: "Nature Immersion",
+    when: "6–8 November 2026",
+    img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+    blurb: "Walks, ritual, rest and the black sand — a weekend of belonging to the land. Next: 6–8 November 2026.",
+    who: "Women who want to be outside and unhurried. No fitness test; the beach and garden set the pace.",
+    happens: "Guided time on the whenua, rest, and simple ritual. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    place: "Te Wāhi Ora and the Piha foreshore, weather allowing.",
+    cost: "Usual stay rates unless a koha is listed for that weekend. Day visitors as published."
+  }
+];
+
+var LETTERS = [
+  { id: "letter-checkin", kind: "Newsletter", title: "Check In this month — air", date: "September 2026", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" },
+  { id: "letter-garden", kind: "Newsletter", title: "From the garden and the kitchen", date: "August 2026", img: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=80" },
+  { id: "letter-winter", kind: "Newsletter", title: "Quiet weeks and funded stays", date: "July 2026", img: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=900&q=80" },
+  { id: "letter-writing", kind: "Newsletter", title: "Writing weekends are filling", date: "June 2026", img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" },
+  { id: "letter-volunteers", kind: "Newsletter", title: "Hands in the garden this Friday", date: "May 2026", img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=80" },
+  { id: "letter-autumn", kind: "Newsletter", title: "Autumn at the black sand", date: "April 2026", img: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80" }
+];
+var BLOGS = [
+  { id: "blog-table", kind: "Bev’s blog", title: "What the table holds", date: "July 2026", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" },
+  { id: "blog-wholeness", kind: "Bev’s blog", title: "A place to belong to", date: "May 2026", img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80" },
+  { id: "blog-alone", kind: "Bev’s blog", title: "On arriving alone", date: "April 2026", img: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?auto=format&fit=crop&w=900&q=80" },
+  { id: "blog-listen", kind: "Bev’s blog", title: "Listening at Piha", date: "March 2026", img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" },
+  { id: "blog-cook", kind: "Bev’s blog", title: "Why we cook for you", date: "February 2026", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80" },
+  { id: "blog-rain", kind: "Bev’s blog", title: "The garden after rain", date: "January 2026", img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=80" },
+  { id: "blog-winter", kind: "Bev’s blog", title: "Winter in the house", date: "June 2025", img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80" },
+  { id: "blog-name", kind: "Bev’s blog", title: "The name we carry", date: "November 2025", img: "https://images.unsplash.com/photo-1502082553048-f009c37129c9?auto=format&fit=crop&w=900&q=80" }
+];
+var VOICES = [
+  { id: "voices-write", kind: "Many Paths, Many Voices", title: "After the writing weekend", date: "April 2026", img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" },
+  { id: "voices-tide", kind: "Many Paths, Many Voices", title: "A letter from the tide line", date: "March 2026", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" },
+  { id: "voices-kitchen", kind: "Many Paths, Many Voices", title: "Night in the kitchen", date: "February 2026", img: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=80" },
+  { id: "voices-walk", kind: "Many Paths, Many Voices", title: "Walking Lion Rock", date: "December 2025", img: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80" },
+  { id: "voices-rest", kind: "Many Paths, Many Voices", title: "What rest sounded like", date: "October 2025", img: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=900&q=80" }
 ];
 
 function $(id) { return document.getElementById(id); }
@@ -15,7 +58,7 @@ function ensureProtoBar() {
   if (document.querySelector(".proto-bar")) return;
   var bar = document.createElement("div");
   bar.className = "proto-bar";
-  bar.innerHTML = '<a href="../../deliverables/sitemap-and-wireframes/tree.html">← Sitemap</a><span>Designed preview · not the live site</span>';
+  bar.innerHTML = '<a href="../../deliverables/sitemap-and-wireframes/index.html#sitemap-a">← Back</a><span>Sep 2026 · not the live site</span>';
   var header = document.querySelector(".site-header");
   var wrap = document.createElement("div");
   wrap.className = "chrome";
@@ -37,7 +80,7 @@ function navSection(id) {
   if (id === "stay" || id === "group-hire") return "stay";
   if (id === "what-we-offer" || id === "check-in" || id.indexOf("event-") === 0) return "offer";
   if (id === "about") return "about";
-  if (id === "news") return "news";
+  if (id === "from-the-house" || id === "news" || id.indexOf("letter-") === 0 || id.indexOf("blog-") === 0 || id.indexOf("voices-") === 0 || id.indexOf("writing-") === 0) return "house";
   if (id === "contact") return "contact";
   if (id === "book") return "book";
   if (id === "support") return "support";
@@ -66,7 +109,16 @@ function headerNav() {
       "</div>" +
     "</div>" +
     '<a href="#about" class="' + cls("about").trim() + '">About</a>' +
-    '<a href="#news" class="' + cls("news").trim() + '">News</a>' +
+    '<div class="nav-drop' + cls("house") + '">' +
+      '<a href="#from-the-house">From the house</a>' +
+      '<div class="nav-menu">' +
+        '<a href="#from-the-house"' + (parseHash() === "from-the-house" ? ' class="is-current"' : "") + ">Overview</a>" +
+        '<a href="#writing-letters"' + (parseHash() === "writing-letters" ? ' class="is-current"' : "") + ">Newsletters</a>" +
+        '<a href="#writing-blog"' + (parseHash() === "writing-blog" ? ' class="is-current"' : "") + ">Bev’s blog</a>" +
+        '<a href="#writing-voices"' + (parseHash() === "writing-voices" ? ' class="is-current"' : "") + ">Many Paths, Many Voices</a>" +
+        '<a href="#writing-all"' + (parseHash() === "writing-all" ? ' class="is-current"' : "") + ">All writing</a>" +
+      "</div>" +
+    "</div>" +
     '<a href="#contact" class="' + cls("contact").trim() + '">Contact</a>' +
     btn("Book", "#book", "btn-primary" + cls("book")) +
     btn("Support", "#support", "btn-ghost" + cls("support"))
@@ -76,51 +128,204 @@ function headerNav() {
 function footerHtml() {
   return (
     '<div class="footer-grid">' +
-      "<div><h2>Te Wāhi Ora</h2><p>129 Marine Parade North<br>Piha Beach, Auckland<br>Women’s retreat · Charitable trust</p></div>" +
-      "<div><h2>Visit</h2><ul>" +
-        '<li><a href="#stay">Stay</a></li>' +
-        '<li><a href="#what-we-offer">What we offer</a></li>' +
-        '<li><a href="#book">Book</a></li>' +
-        '<li><a href="#group-hire">Hire the house</a></li>' +
-      "</ul></div>" +
+      "<div><h2>Te Wāhi Ora</h2><p>129 Marine Parade North<br>Piha Beach, Auckland<br>tewahiora@gmail.com<br>022 078 5757 · 09 812 8775</p></div>" +
       "<div><h2>More</h2><ul>" +
-        '<li><a href="#support">Support</a></li>' +
-        '<li><a href="#news">News</a></li>' +
-        '<li><a href="#contact">Contact</a></li>' +
         '<li><a href="#cancellation">Cancellation policy</a></li>' +
+        '<li><a href="#from-the-house">From the house</a></li>' +
+        '<li><a href="#writing-all">All writing</a></li>' +
       "</ul></div>" +
+      "<div><h2>If you need to talk now</h2>" +
+        "<p>Te Wāhi Ora is not a clinical service and is not staffed by medical professionals. Rest, meals and other women — the fence at the top of the cliff, not the ambulance at the bottom.</p>" +
+        "<p>Call or text 1737 (24/7)<br>Lifeline 0800 543 354<br>Women’s Refuge 0800 733 843<br>Emergency 111</p>" +
+      "</div>" +
     "</div>"
   );
 }
 
-function pageHero(title, lede) {
-  return '<section class="page-hero"><div class="wrap" style="padding-top:0;padding-bottom:0"><h1>' + title + "</h1><p>" + lede + "</p></div></section>";
+function pageHero(title, lede, extra) {
+  return '<section class="page-hero"><div class="wrap" style="padding-top:0;padding-bottom:0"><h1>' + title + "</h1>" + (extra || "") + "<p>" + lede + "</p></div></section>";
 }
 
 function eventCard(ev) {
   return (
     '<article class="card">' +
+      '<img alt="" src="' + ev.img + '">' +
       '<p class="meta">' + ev.when + "</p>" +
       "<h3>" + ev.title + "</h3>" +
       "<p>" + ev.blurb + "</p>" +
-      '<div class="actions">' + btn("Book", "#book", "btn-solid") + btn("Read more", "#" + ev.id, "btn-line") + "</div>" +
+      '<div class="actions card-actions">' + btn("Read more", "#" + ev.id, "btn-line") + btn("Book", "#book", "btn-solid") + "</div>" +
     "</article>"
   );
 }
 
-function formBlock(title) {
+function articleCard(item) {
+  return (
+    '<article class="card">' +
+      '<img alt="" src="' + item.img + '">' +
+      '<p class="meta">' + item.kind + " · " + item.date + "</p>" +
+      "<h3>" + item.title + "</h3>" +
+      "<p>" + LOREM + "</p>" +
+      '<div class="actions card-actions">' + btn("Read", "#" + item.id, "btn-line") + "</div>" +
+    "</article>"
+  );
+}
+
+function writingRail(title, items, allHref) {
+  return (
+    '<div class="rail-head"><h2 class="section-title">' + title + "</h2>" + btn("See all", allHref, "btn-line") + "</div>" +
+    '<div class="scroll-row">' + items.map(articleCard).join("") + "</div>"
+  );
+}
+
+function archivePage(title, lede, items) {
+  return (
+    pageHero(title, lede) +
+    '<section class="wrap">' +
+      '<div class="actions" style="margin-top:0">' + btn("From the house", "#from-the-house", "btn-line") + btn("All writing", "#writing-all", "btn-solid") + "</div>" +
+      '<div class="grid grid-3" style="margin-top:1.4rem">' + items.map(articleCard).join("") + "</div>" +
+    "</section>"
+  );
+}
+
+function articlePage(item) {
+  return (
+    pageHero(item.title, item.kind + " · " + item.date) +
+    '<section class="wrap prose">' +
+      '<img alt="" src="' + item.img + '" style="width:100%;max-width:42rem;margin-bottom:1.2rem">' +
+      "<p>" + LOREM_LONG + "</p><p>" + LOREM + "</p>" +
+      '<div class="actions">' + btn("Back to From the house", "#from-the-house", "btn-line") + btn("All writing", "#writing-all", "btn-solid") + "</div>" +
+    "</section>"
+  );
+}
+
+function weekendGlance() {
+  return (
+    '<div class="weekend-glance">' +
+      "<article><strong>Friday</strong><p>Arrive from about 4pm. Settle into your room, walk to the beach if you like, dinner at the table.</p></article>" +
+      "<article><strong>Saturday</strong><p>Breakfast, lunch and dinner cooked for you. The day is yours — rest, the sand, or a programme if you came for one.</p></article>" +
+      "<article><strong>Sunday</strong><p>Breakfast, a last walk if you want it, lunch, leave around 2pm. Weekends are Friday and Saturday nights (two nights minimum).</p></article>" +
+    "</div>"
+  );
+}
+
+function checkInGlance() {
+  return (
+    '<div class="weekend-glance">' +
+      "<article><strong>10:00</strong><p>Arrive and morning tea.</p></article>" +
+      "<article><strong>10:30</strong><p>A theme for the day. Time with a Listener, or time alone. Simple lunch.</p></article>" +
+      "<article><strong>Around 2:15</strong><p>Home — unless you are staying overnight in the house at the usual rates.</p></article>" +
+    "</div>"
+  );
+}
+
+function stayTabs(includeHire) {
+  var hireBtn = includeHire ? '<button type="button" data-tab="hire" aria-selected="false">Hire the house</button>' : "";
+  var hirePanel = includeHire
+    ? '<div class="tab-panel" data-panel="hire" hidden><h3>Hire the house</h3><p>For groups and facilitators whose purpose fits women’s rest, healing or learning — not a party house.</p><p>' + LOREM + "</p>" +
+      '<img alt="The house" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" style="width:100%;margin:1rem 0">' +
+      "<p>Dates, meals and rooms are agreed together. Use the hire enquiry on Hire the house.</p>" +
+      '<div class="actions">' + btn("Hire enquiry", "#group-hire", "btn-solid") + "</div></div>"
+    : "";
+  return (
+    '<div class="stay-tabs">' +
+      '<div class="tab-bar" role="tablist">' +
+        '<button type="button" class="is-on" data-tab="overnight" aria-selected="true">Overnight</button>' +
+        '<button type="button" data-tab="day" aria-selected="false">Day stay</button>' +
+        hireBtn +
+      "</div>" +
+      '<div class="tab-panel" data-panel="overnight">' +
+        "<h3>Overnight</h3>" +
+        "<p>A woman sleeping here, with or without a programme. From $180 a night including meals. Sea View / Daisy $260. Chalets and caravan $195. Linen, three meals, tea and coffee.</p>" +
+        '<img alt="A bedroom" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=80" style="width:100%;margin:1rem 0">' +
+        "<p>Weekends: Friday and Saturday nights. If cost is hard, ask about a $140 subsidy or the Wynsome Fund.</p>" +
+        '<p class="kicker">Your weekend at a glance</p>' +
+        weekendGlance() +
+        '<div class="actions">' + btn("Book a stay", "#book", "btn-solid") + "</div>" +
+      "</div>" +
+      '<div class="tab-panel" data-panel="day" hidden>' +
+        "<h3>Day stay</h3>" +
+        "<p>About 9:30am–5:30pm. $60 including lunch, snacks, the house and garden. No linen. The beach and optional extras (counselling, massage, Reiki) are the same as overnight.</p>" +
+        '<img alt="The table" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1200&q=80" style="width:100%;margin:1rem 0">' +
+        "<p>" + LOREM + "</p>" +
+        '<div class="actions">' + btn("Book a day stay", "#book", "btn-solid") + "</div>" +
+      "</div>" +
+      hirePanel +
+    "</div>"
+  );
+}
+
+function stayForm(title) {
   return (
     '<form class="form" onsubmit="event.preventDefault(); alert(\'Prototype only — this would send to Te Wāhi Ora.\');">' +
       "<p><strong>" + title + "</strong></p>" +
-      '<label>What are you booking?<select><option>Rest stay (no programme)</option><option>Day stay</option><option>Check In</option><option>A listed event</option><option>Hire the house</option></select></label>' +
+      '<p class="fine">Please fill out the form if you would like to stay. There is a minimum two-night stay for weekends (Friday and Saturday nights). Tell us special dietary needs when you book. If you are pregnant, please let us know.</p>' +
+      '<label>What are you booking?<select><option>Rest stay (no programme)</option><option>Day stay</option><option>Check In</option><option>A listed event</option></select></label>' +
       "<label>Overnight or day only?<select><option>Overnight</option><option>Day only</option></select></label>" +
       '<label>Name <input required></label>' +
       '<label>Email <input type="email" required></label>' +
       '<label>Phone <input></label>' +
-      '<label>Dates <input placeholder="Arrival and departure"></label>' +
-      '<label>Message <textarea></textarea></label>' +
+      '<label>Arrival date <input placeholder="e.g. 16 October 2026"></label>' +
+      '<label>Departure date <input></label>' +
+      '<label>Preferred room <input placeholder="If you have one in mind"></label>' +
+      '<label>Dietary needs <textarea></textarea></label>' +
+      "<label>Are you pregnant?<select><option>No</option><option>Yes</option><option>Prefer not to say</option></select></label>" +
+      '<label>Anything else we should know? <textarea></textarea></label>' +
       "<button type=\"submit\">Send request</button>" +
     "</form>"
+  );
+}
+
+function hireForm() {
+  return (
+    '<form class="form" onsubmit="event.preventDefault(); alert(\'Prototype only — hire enquiry would send to Te Wāhi Ora.\');">' +
+      "<p><strong>Hire enquiry</strong></p>" +
+      '<p class="fine">Tell us what you have in mind. Staff will say whether it fits. If it does, payment is by bank transfer.</p>' +
+      '<label>Your name <input required></label>' +
+      '<label>Group or organisation <input></label>' +
+      '<label>Email <input type="email" required></label>' +
+      '<label>Phone <input></label>' +
+      '<label>Preferred dates <input></label>' +
+      '<label>About how many women? <input></label>' +
+      '<label>What do you want to do here? <textarea required></textarea></label>' +
+      "<button type=\"submit\">Send hire enquiry</button>" +
+    "</form>"
+  );
+}
+
+function faqBlock() {
+  return (
+    '<section class="wrap faq">' +
+      '<p class="kicker">Questions</p><h2 class="section-title">Before you come</h2>' +
+      "<details open><summary>Can I come without an event?</summary><p>Yes. Many women come only to rest. Book a stay for a night, several nights, or a day.</p></details>" +
+      "<details><summary>If I join a weekend, is that overnight or a day?</summary><p>Overnight means you sleep here (weekends: Friday and Saturday nights). A day stay is about 9:30am–5:30pm.</p></details>" +
+      "<details><summary>Can I come alone?</summary><p>Yes. Most women do.</p></details>" +
+      "<details><summary>What if I cannot pay the full rate?</summary><p>Ask. Subsidised rates and the Wynsome Fund exist so cost is not the only door.</p></details>" +
+      "<details><summary>Is Te Wāhi Ora a clinical service?</summary><p>No. We are not a clinical facility and we are not staffed by medical professionals. The house is rest, meals and other women — the fence at the top of the cliff, not the ambulance at the bottom. Helpline numbers are in the footer if you need to talk now.</p></details>" +
+    "</section>"
+  );
+}
+
+function supportPage() {
+  return (
+    pageHero("Support us", "Money and time keep meals, staff, and funded stays possible.") +
+    '<section class="wrap">' +
+      '<p class="lede-block">' + LOREM_LONG + "</p>" +
+      '<p class="lede-block">' + LOREM + "</p>" +
+      '<div class="grid grid-3">' +
+        '<div class="card"><h3>Give once</h3><p>Online, or Give a Little. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>' + btn("Donate", "#support", "btn-solid") + "</div>" +
+        '<div class="card"><h3>400 × $10</h3><p>Monthly giving toward staffing. Lorem ipsum dolor sit amet.</p>' + btn("Give monthly", "#support", "btn-solid") + "</div>" +
+        '<div class="card"><h3>Wynsome Fund</h3><p class="subhead">Fund a stay — so another woman can come.</p><p>Named for Wynsome Diprose. Your gift helps a woman stay who could not otherwise pay.</p>' + btn("Fund a stay", "#support", "btn-solid") + "</div>" +
+        '<div class="card"><h3>Time</h3><p>Garden, kitchen, overnight cover, admin. ' + LOREM + "</p>" + btn("Volunteer", "#contact", "btn-line") + "</div>" +
+        '<div class="card"><h3>Bequests</h3><p>A gift in a will. ' + LOREM + "</p>" + btn("Ask us", "#contact", "btn-line") + "</div>" +
+      "</div>" +
+      "<h2 class=\"section-title\" style=\"margin-top:2.4rem\">Thank you</h2>" +
+      "<p class=\"lede-block\">People, trusts and organisations who keep the door open would be named here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere cubilia Curae; Donec id elit non mi porta gravida at eget metus.</p>" +
+      "<p class=\"lede-block\">We would thank cooks, Listeners, gardeners, the 400 × $10 circle, and funders who make subsidised nights possible. Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>" +
+      '<div class="grid grid-2">' +
+        '<div class="card"><h3>Friends of the house</h3><p>' + LOREM + "</p></div>" +
+        '<div class="card"><h3>Funders and partners</h3><p>' + LOREM + "</p></div>" +
+      "</div>" +
+    "</section>"
   );
 }
 
@@ -128,7 +333,7 @@ var PAGES = {
   home: function () {
     return (
       '<section class="hero"><div class="hero-inner">' +
-        '<p class="eyebrow">Piha · women for women</p>' +
+        '<p class="eyebrow">Welcome · Piha · women for women</p>' +
         "<h1>A place to belong to while moving into wholeness.</h1>" +
         "<p class=\"lede\">A charitable retreat by the Tasman: rest, meals, and the company of other women — for a night, a day, or a gathering.</p>" +
         '<div class="actions">' + btn("Book", "#book", "btn-primary") + btn("What we offer", "#what-we-offer", "btn-ghost") + "</div>" +
@@ -138,24 +343,18 @@ var PAGES = {
         "<h2 class=\"section-title\">Choose what fits.</h2>" +
         '<div class="grid grid-4">' +
           '<a class="card" href="#stay"><h3>Stay</h3><p>Rest without a programme. Overnight or a day. Meals included.</p><span class="meta">See rooms and food →</span></a>' +
-          '<a class="card" href="#check-in"><h3>Check In</h3><p>Free monthly gathering. Saturday or Sunday. Optional overnight.</p><span class="meta">Next dates →</span></a>' +
+          '<a class="card" href="#check-in"><h3>Check In</h3><p>Free monthly gathering. Next: Saturday 26 or Sunday 27 September 2026.</p><span class="meta">Next dates →</span></a>' +
           '<a class="card" href="#what-we-offer"><h3>Events</h3><p>Small themed weekends — writing, grief, nature, and more.</p><span class="meta">See the diary →</span></a>' +
           '<a class="card" href="#group-hire"><h3>Hire the house</h3><p>For groups and facilitators whose purpose fits the Trust.</p><span class="meta">Enquire →</span></a>' +
         "</div></section>" +
       '<section class="band"><div class="wrap">' +
         '<p class="kicker">Cost and access</p>' +
         "<h2 class=\"section-title\">From $180 a night, meals included.</h2>" +
-        "<p class=\"prose\">A day stay is $60. If money is the barrier, subsidised and funded stays exist. Paying the full rate helps another woman come.</p>" +
+        "<p class=\"prose\">A day stay is $60. If money is the barrier, subsidised and funded stays exist. Paying the full rate helps another woman come. " + LOREM + "</p>" +
         '<div class="actions">' + btn("See stay options", "#stay", "btn-solid") + "</div>" +
       "</div></section>" +
       '<section class="wrap"><blockquote class="quote">“I walked into Te Wāhi Ora alone. Happily alone. And because of this I have been able to experience one of the deepest, most wonderful experiences I’ve had.”<cite>A guest · from the current site</cite></blockquote></section>' +
-      '<section class="wrap faq">' +
-        '<p class="kicker">Questions</p><h2 class="section-title">Before you come</h2>' +
-        "<details open><summary>Can I come without an event?</summary><p>Yes. Many women come only to rest. Book a stay for a night, several nights, or a day.</p></details>" +
-        "<details><summary>If I join a weekend, is that overnight or a day?</summary><p>Same house either way. Overnight means you sleep here (weekends: Friday and Saturday nights). A day stay is about 9:30am–5:30pm.</p></details>" +
-        "<details><summary>Can I come alone?</summary><p>Yes. Most women do.</p></details>" +
-        "<details><summary>What if I cannot pay the full rate?</summary><p>Ask. Subsidised rates and the Wynsome Fund exist so cost is not the only door.</p></details>" +
-      "</section>" +
+      faqBlock() +
       '<section class="band-sky"><div class="wrap" style="text-align:center">' +
         "<h2 class=\"section-title\">Keep this place going</h2>" +
         "<p>Donations and time make meals, staff, and funded stays possible.</p>" +
@@ -172,17 +371,13 @@ var PAGES = {
           '<img alt="Garden path" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80">' +
           '<img alt="Table and food" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80">' +
         "</div>" +
-        '<p class="note">Coming for Check In or a weekend? You still stay in this house and eat these meals. Overnight or day only means whether you sleep here — not a different place.</p>' +
-        "<h2 class=\"section-title\">Overnight, day, or hire</h2>" +
-        "<table class=\"compare\"><thead><tr><th></th><th>Overnight</th><th>Day stay</th><th>Hire the house</th></tr></thead><tbody>" +
-        "<tr><th>Who</th><td>A woman sleeping here, with or without a programme</td><td>A woman here for the day only</td><td>A group whose purpose fits</td></tr>" +
-        "<tr><th>Length</th><td>One or more nights. Weekends: Friday and Saturday nights</td><td>About 9:30am–5:30pm</td><td>By arrangement</td></tr>" +
-        "<tr><th>Price</th><td>From $180 including meals. Sea View / Daisy $260. Chalets and caravan $195</td><td>$60 including lunch</td><td>Enquire</td></tr>" +
-        "<tr><th>Included</th><td>Room, three meals, linen, tea and coffee</td><td>Lunch, snacks, the house and garden — no linen</td><td>Agreed together</td></tr>" +
-        "<tr><th>Piha & extras</th><td>Beach, walks, optional counselling, massage, Reiki</td><td>The same</td><td>If the group wants it</td></tr>" +
-        "<tr><th>If cost is hard</th><td>Ask about $140 subsidy / Wynsome</td><td>Ask</td><td>—</td></tr>" +
-        "</tbody></table>" +
-        '<div class="actions" style="margin-top:1.2rem">' + btn("Book a stay", "#book", "btn-solid") + btn("Hire enquiry", "#group-hire", "btn-line") + "</div>" +
+        "<p class=\"lede-block\">This is the house you sleep in and the table you eat at. " + LOREM + "</p>" +
+        "<h2 class=\"section-title\">Choose how you stay</h2>" +
+        stayTabs(true) +
+        "<h2 class=\"section-title\" style=\"margin-top:2.2rem\">Nourishment</h2>" +
+        "<p class=\"prose\">Meals are part of the care, not a hotel extra. " + LOREM_LONG + "</p>" +
+        "<h2 class=\"section-title\">While you are here</h2>" +
+        "<p class=\"prose\">Optional counselling, massage, Reiki, walks, the black sand. Gift vouchers and the digital cookbook can be bought from this page. For local Piha information we would link out to This is Piha, if they agree.</p>" +
       "</section>"
     );
   },
@@ -191,9 +386,14 @@ var PAGES = {
     return (
       pageHero("What we offer", "Check In and themed weekends. You can also come with no programme at all.") +
       '<section class="wrap">' +
-        '<p class="note">The house, rooms and meals are on <a href="#stay">Stay</a>.</p>' +
+        '<div class="note"><p>Rooms, meals and the rhythm of a night in the house live on <a href="#stay">Stay</a>. If you are bringing a group, <a href="#group-hire">hire the house</a> is the enquiry path — we will say whether the use fits.</p><p>' + LOREM + "</p>" +
+        '<div class="photo-row" style="margin-top:1rem;margin-bottom:0">' +
+          '<img alt="The house" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80">' +
+          '<img alt="A bedroom" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=700&q=80">' +
+          '<img alt="A meal" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=700&q=80">' +
+        "</div></div>" +
         '<div class="grid grid-3">' +
-          '<article class="card"><p class="meta">Last weekend of each month</p><h3>Check In</h3><p>Free day gathering. Optional overnight at usual rates.</p><div class="actions">' + btn("Book", "#book", "btn-solid") + btn("Read more", "#check-in", "btn-line") + "</div></article>" +
+          '<article class="card"><img alt="" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"><p class="meta">Next: 26 or 27 September 2026</p><h3>Check In</h3><p>A free gathering on the last weekend of each month — Saturday or Sunday. Optional overnight at usual stay rates. Women together, a Listener if you want one, lunch at the table.</p><div class="actions card-actions">' + btn("Read more", "#check-in", "btn-line") + btn("Book", "#book", "btn-solid") + "</div></article>" +
           cards +
         "</div></section>"
     );
@@ -202,9 +402,11 @@ var PAGES = {
     return (
       pageHero("Check In", "A free monthly gathering — Saturday or Sunday, last weekend of the month.") +
       '<section class="wrap prose">' +
-        "<h2>What it is</h2><p>Women together, without a course to complete. A Listener if you want to talk, the beach if you don’t, lunch at the table.</p>" +
-        "<h2>What happens</h2><p>10:00 arrive and morning tea. 10:30 theme for the day. Time with a Listener or time alone. Simple lunch. Home around 2:15.</p>" +
-        "<h2>When</h2><p>2026 dates run March to November on the last weekend of each month. Metaphor this year: air.</p>" +
+        "<h2>What it is</h2><p>Women together, without a course to complete. A Listener if you want to talk, the beach if you don’t, lunch at the table. Metaphor this year: air.</p>" +
+        "<h2>Who it is for</h2><p>Any woman who wants a supported day among other women. You do not need a crisis to come. " + LOREM + "</p>" +
+        "<h2>What happens</h2>" + checkInGlance() +
+        "<h2>When</h2><p>Last weekend of each month, March to November. Next: Saturday 26 or Sunday 27 September 2026. Then 31 October / 1 November, and 28 or 29 November.</p>" +
+        "<h2>Place</h2><p>Te Wāhi Ora, 129 Marine Parade North, Piha. If you stay overnight you are in the same house, at the usual stay rates — see Stay.</p>" +
         "<h2>Cost</h2><p>Day visitors: no charge. Overnight: usual stay rates. Subsidy if you need it.</p>" +
         '<div class="actions">' + btn("Book Check In", "#book", "btn-solid") + btn("See the house", "#stay", "btn-line") + "</div>" +
       "</section>"
@@ -214,86 +416,129 @@ var PAGES = {
     return (
       pageHero("About", "A retreat run by women for women, in a house by Piha’s black sand.") +
       '<section class="wrap prose">' +
-        "<h2>Who we are</h2><p>Te Wāhi Ora means a healing place: a place to belong to while moving into wholeness — a name given with Te Kawerau ā Maki. We are a charitable trust. We cook, make beds, and hold space. Values live in that work: rest without earning it, meals you did not cook, women listening to women. We do not teach a creed.</p>" +
+        "<h2>Who we are</h2><p><em>Proposal — they will rewrite.</em> Creating Space for Women. Te Wāhi Ora means a healing place: a place to belong to while moving into wholeness. Charitable trust, women for women.</p><p>" + LOREM_LONG + "</p>" +
         "<h2>Who it is for</h2><p>Women who need time away — tired, in transition, curious, or simply ready to breathe. You do not need a crisis to come.</p>" +
         "<h2>How it began</h2><p>Bev Holt and Wynsome Diprose imagined this in the late 1980s. The retreat has been offering stays since 1991. Wynsome died the year it began; her name still marks the fund that helps women who cannot pay.</p>" +
-        "<h2>People</h2><p>Bev, cooks, Listeners, trustees, patrons, volunteers — a circle around the house, not a corporate team page.</p>" +
+        "<h2>People</h2><p>Bev, cooks, Listeners, trustees, patrons, volunteers — a circle around the house, not a corporate team page. " + LOREM + "</p>" +
         "<h2>Charitable trust</h2><p>Fees do not cover everything. Donations, the 400×$10, and time keep the door open. The full give path is on Support.</p>" +
       "</section>"
     );
   },
-  news: function () {
+  "from-the-house": function () {
     return (
-      pageHero("News", "Letters from Piha, and Bev’s writing, on this site — not only in email.") +
-      '<section class="wrap grid grid-2">' +
-        '<form class="form" onsubmit="event.preventDefault(); alert(\'Prototype — Mailchimp would go here.\');"><p><strong>Join the newsletter</strong></p><label>Email <input type="email" required></label><button type="submit">Subscribe</button></form>' +
-        '<div class="card"><h3>Recent letters</h3><p>Placeholder list: March Check In · Celebration day · Writing weekend reminder. Past issues would live here.</p></div>' +
-        '<div class="card"><h3>From Bev</h3><p>Longer pieces can be published here instead of only on a separate blog. The old blog can remain as an archive link.</p></div>' +
-      "</section>"
-    );
-  },
-  support: function () {
-    return (
-      pageHero("Support us", "Money and time keep meals, staff, and funded stays possible.") +
+      pageHero("From the house", "Letters from Te Wāhi Ora, Bev’s writing, and Many Paths, Many Voices.") +
       '<section class="wrap">' +
-        "<p class=\"prose\">Te Wāhi Ora is a charitable trust. Paying guests help. So do $10 a month, a funded night for someone else, and Friday in the garden.</p>" +
-        '<div class="grid grid-3">' +
-          '<div class="card"><h3>Give once</h3><p>Online, or Give a Little.</p>' + btn("Donate", "#support", "btn-solid") + "</div>" +
-          '<div class="card"><h3>400 × $10</h3><p>Monthly giving toward staffing.</p>' + btn("Give monthly", "#support", "btn-solid") + "</div>" +
-          '<div class="card"><h3>Fund a stay</h3><p>The Wynsome Fund — so another woman can come.</p>' + btn("Fund a stay", "#support", "btn-solid") + "</div>" +
-          '<div class="card"><h3>Time</h3><p>Garden, kitchen, overnight cover, admin.</p>' + btn("Volunteer", "#contact", "btn-line") + "</div>" +
-          '<div class="card"><h3>Bequests</h3><p>A gift in a will.</p>' + btn("Ask us", "#contact", "btn-line") + "</div>" +
+        '<div class="grid grid-2">' +
+          '<form class="form" onsubmit="event.preventDefault(); alert(\'Prototype — Mailchimp would go here.\');"><p><strong>Join the newsletter</strong></p><p>About monthly. ' + LOREM + '</p><label>Email <input type="email" required></label><button type="submit">Subscribe</button></form>' +
+          "<div><p class=\"lede-block\">This is not a newsroom. It is how the house keeps in touch — a letter, a longer piece from Bev, writing from the weekends.</p><p class=\"lede-block\">" + LOREM + "</p>" + btn("See all writing", "#writing-all", "btn-solid") + "</div>" +
         "</div>" +
-        "<h2 class=\"section-title\" style=\"margin-top:2rem\">Thank you</h2><p>Donors, funders, volunteers and organisations who keep the door open would be named here.</p>" +
+        writingRail("Newsletters", LETTERS, "#writing-letters") +
+        writingRail("Bev’s blog", BLOGS, "#writing-blog") +
+        writingRail("Many Paths, Many Voices", VOICES, "#writing-voices") +
       "</section>"
     );
   },
+  "writing-all": function () {
+    return archivePage("All writing", "Every letter, blog post and voice in one grid.", LETTERS.concat(BLOGS, VOICES));
+  },
+  "writing-letters": function () {
+    return archivePage("Newsletters", "Past letters from the house. Lorem ipsum until real issues are pasted in.", LETTERS);
+  },
+  "writing-blog": function () {
+    return archivePage("Bev’s blog", "Longer pieces, so she can write again.", BLOGS);
+  },
+  "writing-voices": function () {
+    return archivePage("Many Paths, Many Voices", "Writing from the weekends and other voices around Te Wāhi Ora.", VOICES);
+  },
+  news: function () { return PAGES["from-the-house"](); },
+  support: supportPage,
   book: function () {
     return (
-      pageHero("Book", "A request we answer — until they confirm a live calendar. Online payment can still follow.") +
-      '<section class="wrap">' + formBlock("Tell us what you need") + "</section>"
+      pageHero("Book", "Choose how you are coming, then send dates. We still confirm — until a live calendar exists.") +
+      '<section class="wrap">' +
+        '<p class="kicker">How you are coming</p>' +
+        '<div class="book-flow">' +
+          '<div class="card"><h3>Rest stay</h3><p>No programme. Overnight or a day. Meals included.</p></div>' +
+          '<div class="card"><h3>Check In or an event</h3><p>The gathering is free or ticketed; a bed is the usual stay rate if you sleep here.</p></div>' +
+          '<div class="card"><h3>Hire</h3><p>Groups use the hire form, not this one.</p>' + btn("Hire enquiry", "#group-hire", "btn-line") + "</div>" +
+        "</div>" +
+        stayForm("Tell us what you need") +
+      "</section>"
     );
   },
   "group-hire": function () {
     return (
       pageHero("Hire the house", "For groups and facilitators whose purpose fits.") +
-      '<section class="wrap prose">' +
-        "<p>This is not a party house. If your gathering belongs with women’s rest, healing, or learning, enquire. Rooms, meals and Piha are described on Stay.</p>" +
-        '<div class="actions">' + btn("Enquire", "#book", "btn-solid") + btn("See the house", "#stay", "btn-line") + "</div>" +
+      '<section class="wrap">' +
+        "<p class=\"lede-block\">This is not a party house. If your gathering belongs with women’s rest, healing, or learning, enquire. Rooms, meals and Piha are described on Stay.</p>" +
+        "<p class=\"lede-block\">" + LOREM_LONG + "</p>" +
+        hireForm() +
+        '<div class="actions">' + btn("See the house", "#stay", "btn-line") + "</div>" +
       "</section>"
     );
   },
   contact: function () {
     return (
-      pageHero("Contact", "Questions that are not a booking. Bookings use Book.") +
+      pageHero("Contact", "Questions that are not a booking. Stays, Check Ins and events use Book.") +
       '<section class="wrap grid grid-2">' +
-        "<div><p>129 Marine Parade North, Piha<br>Phone (one number, to confirm)<br>bookings.tewahiora@gmail.com<br>tewahiorapiha@gmail.com</p>" +
-        "<p>Piha Rides for airport and city runs — details as on the current site.</p></div>" +
-        '<form class="form" onsubmit="event.preventDefault(); alert(\'Prototype only.\');"><label>Name <input></label><label>Email <input type="email"></label><label>Message <textarea></textarea></label><button type="submit">Send</button></form>' +
+        "<div>" +
+          "<p class=\"lede-block\">Write or text if you are not sure which stay fits, or if you want to volunteer, gift a stay, or ask about the Trust. " + LOREM + "</p>" +
+          "<p><strong>Te Wāhi Ora Women’s Retreat</strong><br>129 Marine Parade North<br>Piha Beach, Auckland</p>" +
+          "<p>tewahiora@gmail.com<br>Mobile 022 078 5757 (text is welcome)<br>Landline 09 812 8775 (forwards to the mobile)</p>" +
+          "<p>Piha Rides for airport and city runs — details as on the current site.</p>" +
+          '<img alt="Map placeholder" src="https://images.unsplash.com/photo-1524661132064-ba1964bfce30?auto=format&fit=crop&w=900&q=80" style="width:100%;margin-top:1rem;border:2px solid #1f140e">' +
+        "</div>" +
+        '<form class="form" onsubmit="event.preventDefault(); alert(\'Prototype only.\');"><p><strong>Send a message</strong></p><label>Name <input required></label><label>Email <input type="email" required></label><label>Phone <input></label><label>Message <textarea required></textarea></label><button type="submit">Send</button></form>' +
       "</section>"
     );
   },
   cancellation: function () {
-    return pageHero("Cancellation policy", "Notice, deposits, refunds — linked from Book.") + '<section class="wrap prose"><p>Placeholder for the rules they already publish.</p></section>';
-  },
-  "need-help": function () {
-    return pageHero("Do you need help?", "What this place can offer, and what it is not.") + '<section class="wrap prose"><p>Draft only if they agree: we are not a crisis or clinical service. Helplines can sit here.</p></section>';
+    return pageHero("Cancellation policy", "Notice, deposits, refunds — linked from Book.") + '<section class="wrap prose"><p>Placeholder for the rules they already publish.</p><p>' + LOREM_LONG + "</p></section>";
   }
 };
 
 EVENTS.forEach(function (ev) {
   PAGES[ev.id] = function () {
     return (
-      pageHero(ev.title, ev.when + " · " + ev.blurb) +
+      pageHero(ev.title, ev.blurb) +
       '<section class="wrap prose">' +
-        "<h2>What it is</h2><p>" + ev.blurb + "</p>" +
-        "<h2>The place</h2><p>You stay in the same house as any other guest. Overnight or day is only whether you sleep here. See Stay for rooms, meals and Piha.</p>" +
-        "<h2>Cost</h2><p>Usual stay rates unless a koha or extra fee is listed. Day visitors: as published for that weekend.</p>" +
+        '<img alt="" src="' + ev.img + '" style="width:100%;max-width:42rem;margin-bottom:1.2rem">' +
+        "<h2>What it is</h2><p>" + ev.blurb + "</p><p>" + LOREM + "</p>" +
+        "<h2>Who it is for</h2><p>" + ev.who + "</p>" +
+        "<h2>What happens</h2><p>" + ev.happens + "</p>" +
+        '<p class="kicker">Your weekend at a glance</p>' + weekendGlance() +
+        "<h2>When</h2><p>" + ev.when + "</p>" +
+        "<h2>Place</h2><p>" + ev.place + "</p>" +
+        "<h2>Cost</h2><p>" + ev.cost + "</p>" +
         '<div class="actions">' + btn("Book", "#book", "btn-solid") + btn("Stay", "#stay", "btn-line") + "</div>" +
       "</section>"
     );
   };
 });
+
+LETTERS.concat(BLOGS, VOICES).forEach(function (item) {
+  PAGES[item.id] = function () { return articlePage(item); };
+});
+
+function bindStayTabs() {
+  var root = document.querySelector(".stay-tabs");
+  if (!root) return;
+  var tabs = root.querySelectorAll("[data-tab]");
+  var panels = root.querySelectorAll("[data-panel]");
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      var id = tab.getAttribute("data-tab");
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle("is-on", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      panels.forEach(function (p) {
+        p.hidden = p.getAttribute("data-panel") !== id;
+      });
+    });
+  });
+}
 
 function render() {
   ensureProtoBar();
@@ -302,6 +547,7 @@ function render() {
   $("footer").innerHTML = footerHtml();
   var view = PAGES[id];
   $("main").innerHTML = view ? view() : PAGES.home();
+  bindStayTabs();
   document.title = (id === "home" ? "Home" : document.querySelector("#main h1").textContent) + " — Te Wāhi Ora";
   window.scrollTo(0, 0);
   $("nav").classList.remove("open");

@@ -1,12 +1,12 @@
 :root {
-  --blue: #0066cc;
-  --blue-dark: #004c99;
-  --sky: #cbdef2;
-  --sky-deep: #b3d2f2;
-  --white: #ffffff;
-  --ink: #2b2b2b;
-  --muted: #5c5c5c;
-  --line: #3a3a3a;
+  --blue: #8b3518;
+  --blue-dark: #4a1b0c;
+  --sky: #efe4d4;
+  --sky-deep: #e0c9a8;
+  --white: #fff8ee;
+  --ink: #1f140e;
+  --muted: #3d2a22;
+  --line: #1f140e;
   --font: "Open Sans", system-ui, sans-serif;
 }
 
@@ -24,8 +24,8 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 0.55rem 1.25rem;
-  background: var(--ink);
-  color: var(--sky);
+  background: #1c2430;
+  color: #ffffff;
   font-size: 0.82rem;
 }
 .proto-bar a {
@@ -56,7 +56,7 @@ body {
   border: 2px solid var(--blue);
   border-radius: 8px;
   padding: 0.7rem 0.8rem;
-  box-shadow: 0 8px 20px rgba(0, 60, 120, 0.12);
+  box-shadow: 0 8px 20px rgba(74, 27, 12, 0.12);
 }
 .kicker {
   margin: 0;
@@ -210,7 +210,7 @@ a.box:hover {
 .footer-wrap { margin-top: 2.5rem; }
 .footer-kids {
   display: grid;
-  grid-template-columns: 168px 168px;
+  grid-template-columns: 168px 168px 168px;
   column-gap: 2rem;
   position: relative;
 }
@@ -218,3 +218,48 @@ a.box:hover {
   left: 84px;
   right: 84px;
 }
+
+.how {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 0.5rem;
+}
+.how h1 { margin: 0.2rem 0 0.7rem; font-size: 1.85rem; }
+.how p, .how li { color: var(--ink); line-height: 1.55; }
+.how p { margin: 0 0 0.8rem; }
+.how ul { margin: 0 0 1rem; padding-left: 1.2rem; }
+.how li { margin-bottom: 0.35rem; }
+.how a { color: var(--blue); font-weight: 700; }
+.pack-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.1rem;
+  margin: 1rem 0 0;
+}
+.pack-jump a {
+  font-weight: 700;
+  color: var(--blue);
+}
+.sitemap-block {
+  padding-top: 1rem;
+}
+.sitemap-block h2 {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 0;
+  font-size: 1.45rem;
+}
+.sitemap-block .lede {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.35rem 1.25rem 0;
+  color: var(--muted);
+}
+.theme-b {
+  --blue: #093836;
+  --blue-dark: #093836;
+  --sky: #f9f3ea;
+  --sky-deep: #d8c8a6;
+}
+.theme-b .page.cta { color: var(--blue-dark); }
+.theme-b .leaf { background: #d8c8a6; }

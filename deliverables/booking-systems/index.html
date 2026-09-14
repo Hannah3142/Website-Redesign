@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Te Wāhi Ora — Booking and payment system proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="proto-bar">
+    <a href="../sitemap-and-wireframes/index.html">← Back</a>
+    <span>Sep 2026 · not the live site</span>
+  </div>
+  <header class="doc-bar">
+    <div>
+      <p class="brand">Te Wāhi Ora Women’s Retreat</p>
+      <h1>Booking and payment system proposal</h1>
+    </div>
+    <p class="badge">Draft · September 2026</p>
+  </header>
+
+  <main>
+    <section class="block">
+      <p>A draft from Hannah. I am not a bookings expert. Please ask Harper Digital before a final decision.</p>
+      <p>The aim is a system the Trust does not pay to keep running. There is no monthly Humanitix fee. Stay option A also has no software fee. Stay option B is the exception: the Trust would pay for a live calendar.</p>
+      <p>When someone pays, they can <strong>pay online</strong> (card or Humanitix) and <strong>cover the platform fees themselves</strong>, so Te Wāhi Ora still receives the listed price. Or they can <strong>transfer to the Trust’s bank account</strong>. Bank transfer has no extra fees for anyone. Staff still mark those bookings as paid.</p>
+      <p><strong>Events and Check Ins</strong> use Humanitix (charity rate), embedded on the website. Humanitix is only for the programme or the free RSVP — not for beds. The guest pays Humanitix’s small fee on paid tickets; the Trust still keeps the ticket price. Free Check In RSVPs cost nothing. Humanitix giving its own profits to other charities does not change what Te Wāhi Ora receives, so it is not a money decision for the Trust.</p>
+      <p><strong>Every bed</strong> (rest stay, Check In overnight, or staying for an event) goes through <strong>one stay system</strong>, at the same rates — from $180 a night including meals, or $60 for a day stay. Choose A (form and emails, no software fee) or B (live calendar, the Trust pays for that software).</p>
+      <p><strong>Hire of the house</strong> stays an enquiry. If it fits, they pay by bank transfer. <strong>Subsidies</strong> are decided by staff, not paid online.</p>
+    </section>
+
+    <section class="block" id="flows">
+      <h2>How each booking could work</h2>
+
+      <div class="map-canvas">
+        <div class="map">
+          <div class="map-root-wrap">
+            <div class="map-box map-root">I want to…</div>
+            <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+          </div>
+
+          <div class="map-branches">
+            <div class="map-rail"></div>
+
+            <div class="map-col">
+              <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+              <div class="map-box">Hire the house</div>
+              <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+              <div class="map-box step">Enquiry form</div>
+              <div class="map-arrow">
+                <span class="map-line"></span>
+                <span class="map-cap">If it fits</span>
+                <span class="map-line"></span>
+                <span class="map-head"></span>
+              </div>
+              <div class="map-box step">Bank transfer</div>
+            </div>
+
+            <div class="map-col">
+              <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+              <div class="map-box">Come to an event</div>
+              <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+              <div class="map-box step">Embedded Humanitix</div>
+              <div class="map-fork">
+                <span class="map-line"></span>
+                <div class="map-pays">
+                <div class="map-rail"></div>
+                <div class="map-col">
+                  <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                  <div class="map-box pay">Pay online<small>The person paying covers the fees</small></div>
+                </div>
+                <div class="map-col">
+                  <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                  <div class="map-box pay">Bank transfer<small>No extra fees</small></div>
+                </div>
+                <div class="map-col">
+                  <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                  <div class="map-box pay">Request a subsidy</div>
+                </div>
+              </div>
+              </div>
+              <div class="map-to-bed">
+              <div class="map-arrow">
+                <span class="map-line"></span>
+                <span class="map-cap">If she wants a bed</span>
+                <span class="map-line"></span>
+                <span class="map-head"></span>
+              </div>
+              </div>
+            </div>
+
+            <div class="map-col">
+              <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+              <div class="map-box">Come to Check In</div>
+              <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+              <div class="map-box step">Embedded Humanitix<small>Free RSVP · no payment · no fees</small></div>
+              <div class="map-to-bed">
+              <div class="map-arrow">
+                <span class="map-line"></span>
+                <span class="map-cap">If she wants a bed</span>
+                <span class="map-line"></span>
+                <span class="map-head"></span>
+              </div>
+              </div>
+            </div>
+
+            <div class="map-col">
+              <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+              <div class="map-box">Only book a stay</div>
+              <div class="map-to-bed">
+              <div class="map-arrow">
+                <span class="map-line"></span>
+                <span class="map-cap">Straight to a bed</span>
+                <span class="map-line"></span>
+                <span class="map-head"></span>
+              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-funnel">
+            <div></div>
+            <div></div>
+            <div class="map-join">
+              <div class="map-rail"></div>
+              <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+              <div class="map-box step map-wide">All beds are booked here — one stay system<small>Same rates for everyone who sleeps at the house (from $180 a night including meals, or $60 for a day stay). Humanitix is only for events or Check Ins, not for accommodation.</small></div>
+              <div class="map-arrow"><span class="map-line"></span></div>
+            </div>
+          </div>
+
+          <div class="map-ab-wrap">
+            <div class="map-ab">
+              <div class="map-rail"></div>
+
+              <div class="map-col">
+                <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                <div class="map-box">A — Form and emails<small>The Trust does not pay for stay-booking software</small></div>
+                <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                <div class="map-box step">Fill in a form</div>
+                <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                <div class="map-box step">Get emails</div>
+                <div class="map-fork">
+                  <span class="map-line"></span>
+                  <div class="map-pays">
+                  <div class="map-rail"></div>
+                  <div class="map-col">
+                    <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                    <div class="map-box pay">Pay online<small>The person paying covers the fees</small></div>
+                  </div>
+                  <div class="map-col">
+                    <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                    <div class="map-box pay">Bank transfer<small>No extra fees</small></div>
+                  </div>
+                  <div class="map-col">
+                    <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                    <div class="map-box pay">Request a subsidy</div>
+                  </div>
+                </div>
+                </div>
+              </div>
+
+              <div class="map-col">
+                <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                <div class="map-box">B — Live calendar<small>The Trust pays for that calendar software</small></div>
+                <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                <div class="map-box step">Pick free nights on the website</div>
+                <div class="map-fork">
+                  <span class="map-line"></span>
+                  <div class="map-pays">
+                  <div class="map-rail"></div>
+                  <div class="map-col">
+                    <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                    <div class="map-box pay">Pay online<small>The person paying covers the fees</small></div>
+                  </div>
+                  <div class="map-col">
+                    <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                    <div class="map-box pay">Bank transfer<small>No extra fees</small></div>
+                  </div>
+                  <div class="map-col">
+                    <div class="map-arrow"><span class="map-line"></span><span class="map-head"></span></div>
+                    <div class="map-box pay">Request a subsidy</div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>A or B for stays</h2>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>A — Form and emails</th>
+            <th>B — Live calendar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cost to the Trust</td>
+            <td>No stay-booking software fee</td>
+            <td>Pays monthly or yearly for the calendar</td>
+          </tr>
+          <tr>
+            <td>For the guest</td>
+            <td>Fills a form, waits for emails, then pays</td>
+            <td>Sees which nights are free and books on the site</td>
+          </tr>
+          <tr>
+            <td>Double-booking</td>
+            <td>Staff block dates by hand; two people can ask for the same nights</td>
+            <td>The calendar blocks nights itself</td>
+          </tr>
+          <tr>
+            <td>Staff time</td>
+            <td>More email, especially on bank transfer</td>
+            <td>Less diary work for ordinary stays</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="block" id="fees">
+      <h2>Who takes money</h2>
+      <p>Figures are for September 2026. Confirm in each tool before going live. This table assumes the person paying covers online fees, as above — not the Trust.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Booking</th>
+            <th>Pay online</th>
+            <th>Bank transfer</th>
+            <th>What the Trust keeps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Paid event (Humanitix charity)</td>
+            <td>Guest pays the fee (about 3% + $0.30). On a $250 ticket she pays about $257.80</td>
+            <td>$0 extra</td>
+            <td>The listed ticket price ($250)</td>
+          </tr>
+          <tr>
+            <td>Check In RSVP</td>
+            <td>Free — no payment, no fee</td>
+            <td>Not needed</td>
+            <td>$0 (it is free)</td>
+          </tr>
+          <tr>
+            <td>Stay (card, e.g. Stripe)</td>
+            <td>Guest pays the fee. On $180 a night, about $5.07</td>
+            <td>$0 extra</td>
+            <td>The listed stay price</td>
+          </tr>
+          <tr>
+            <td>Hire</td>
+            <td>Not used</td>
+            <td>$0 extra, after “if it fits”</td>
+            <td>The agreed hire amount</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="block" id="next">
+      <h2>Still to decide</h2>
+      <ul>
+        <li>Stay system A or B.</li>
+        <li>How long to hold an unpaid bank-transfer booking (for example five days), so beds are not blocked forever.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

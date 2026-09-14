@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/deliverables/sitemap-and-wireframes/index.html",
+      "permanent": false
+    }
+  ]
+}
