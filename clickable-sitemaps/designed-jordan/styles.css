@@ -13,6 +13,9 @@
   --font: "Open Sans", system-ui, sans-serif;
   --accent: #cace5e;
   --bark: #d8c8a6;
+  --foam: #f9f3ea;
+  --fern: #597c60;
+  --skies: #88cdd1;
 }
 
 * { box-sizing: border-box; }
@@ -202,6 +205,10 @@ a:hover { color: var(--blue-dark); }
   color: var(--blue) !important;
 }
 .btn-primary:hover { background: var(--accent); color: var(--blue-dark) !important; }
+.nav > a.btn-primary:hover {
+  background: var(--skies);
+  color: var(--blue-dark) !important;
+}
 .btn-ghost {
   border-color: #ffffff;
   color: var(--white) !important;
@@ -327,6 +334,32 @@ a.card:hover { transform: translateY(-3px); }
 .band {
   background: var(--white);
 }
+.band-bark { background: var(--foam); }
+.band-fern {
+  background: var(--fern);
+  color: var(--foam);
+}
+.band-fern .section-title,
+.band-fern .kicker,
+.band-fern p { color: var(--foam); }
+.events-options { background: transparent; }
+.events-options .card {
+  background: var(--fern);
+  color: var(--foam);
+  box-shadow: none;
+  border: 1px solid rgba(9, 56, 54, 0.12);
+}
+.events-options .card h3,
+.events-options .card p,
+.events-options .card .meta { color: var(--foam); }
+.events-options .btn-line {
+  background: var(--foam);
+  border-color: var(--foam);
+  color: var(--blue) !important;
+}
+.band-bark .note { background: var(--fern); color: var(--foam); border-color: transparent; }
+.band-bark .note a { color: var(--foam); }
+.events-also .card { background: var(--foam); }
 .band-sky { background: var(--sky-deep); color: #ffffff; }
 .band-sky .section-title,
 .band-sky p,

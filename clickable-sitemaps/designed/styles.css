@@ -13,6 +13,10 @@
   --font: "Open Sans", system-ui, sans-serif;
   --hover: #4a1b0c;
   --paper: #fff8ee;
+  --bark: #d8c8a6;
+  --foam: #f9f3ea;
+  --fern: #597c60;
+  --skies: #88cdd1;
 }
 
 * { box-sizing: border-box; }
@@ -212,6 +216,11 @@ a:hover { color: var(--blue-dark); }
   border-color: var(--hover);
   color: #ffffff !important;
 }
+.nav > a.btn-primary:hover {
+  background: var(--skies);
+  border-color: var(--skies);
+  color: var(--ink) !important;
+}
 .btn-ghost {
   border-color: var(--ink);
   color: var(--ink) !important;
@@ -379,6 +388,29 @@ a.card:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink
   background: var(--sky-deep);
   clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
 }
+.band-bark { background: var(--foam); }
+.band-bark .note { background: var(--fern); color: var(--foam); border-color: var(--ink); }
+.band-bark .note a { color: var(--foam); }
+.events-options .card { background: var(--fern); color: var(--foam); }
+.events-options .card h3,
+.events-options .card p,
+.events-options .card .meta { color: var(--foam); }
+.events-options .btn-line {
+  background: var(--foam);
+  border-color: var(--foam);
+  color: var(--blue) !important;
+}
+.band-fern {
+  background: var(--fern);
+  color: var(--foam);
+}
+.band-fern .section-title,
+.band-fern .kicker,
+.band-fern p { color: var(--foam); }
+.events-also .card { background: var(--foam); color: var(--ink); }
+.events-also .card h3,
+.events-also .card p,
+.events-also .card .meta { color: var(--ink); }
 .quote {
   max-width: 46rem;
   margin: 0 auto;

@@ -385,17 +385,33 @@ var PAGES = {
     var cards = EVENTS.map(eventCard).join("");
     return (
       pageHero("What we offer", "Check In and themed weekends. You can also come with no programme at all.") +
-      '<section class="wrap">' +
-        '<div class="note"><p>Rooms, meals and the rhythm of a night in the house live on <a href="#stay">Stay</a>. If you are bringing a group, <a href="#group-hire">hire the house</a> is the enquiry path — we will say whether the use fits.</p><p>' + LOREM + "</p>" +
-        '<div class="photo-row" style="margin-top:1rem;margin-bottom:0">' +
-          '<img alt="The house" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80">' +
-          '<img alt="A bedroom" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=700&q=80">' +
-          '<img alt="A meal" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=700&q=80">' +
+      '<section class="band-bark">' +
+        '<div class="wrap">' +
+          '<div class="note"><p>Rooms, meals and the rhythm of a night in the house live on <a href="#stay">Stay</a>. If you are bringing a group, <a href="#group-hire">hire the house</a> is the enquiry path — we will say whether the use fits.</p><p>' + LOREM + "</p>" +
+          '<div class="photo-row" style="margin-top:1rem;margin-bottom:0">' +
+            '<img alt="The house" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80">' +
+            '<img alt="A bedroom" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=700&q=80">' +
+            '<img alt="A meal" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=700&q=80">' +
+          "</div></div>" +
+        "</div>" +
+        '<div class="events-options"><div class="wrap">' +
+          '<p class="kicker">What’s on</p>' +
+          "<h2 class=\"section-title\">Choose a gathering.</h2>" +
+          '<div class="grid grid-3">' +
+            '<article class="card"><img alt="" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"><p class="meta">Next: 26 or 27 September 2026</p><h3>Check In</h3><p>A free gathering on the last weekend of each month — Saturday or Sunday. Optional overnight at usual stay rates. Women together, a Listener if you want one, lunch at the table.</p><div class="actions card-actions">' + btn("Read more", "#check-in", "btn-line") + btn("Book", "#book", "btn-solid") + "</div></article>" +
+            cards +
+          "</div>" +
         "</div></div>" +
+      "</section>" +
+      '<section class="band-fern"><div class="wrap events-also">' +
+        '<p class="kicker">Also here</p>' +
+        "<h2 class=\"section-title\">Come to rest, or bring a group.</h2>" +
         '<div class="grid grid-3">' +
-          '<article class="card"><img alt="" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"><p class="meta">Next: 26 or 27 September 2026</p><h3>Check In</h3><p>A free gathering on the last weekend of each month — Saturday or Sunday. Optional overnight at usual stay rates. Women together, a Listener if you want one, lunch at the table.</p><div class="actions card-actions">' + btn("Read more", "#check-in", "btn-line") + btn("Book", "#book", "btn-solid") + "</div></article>" +
-          cards +
-        "</div></section>"
+          '<a class="card" href="#stay"><h3>Stay</h3><p>Sleep in the house with no programme. Overnight or a day. Meals included.</p><span class="meta">See the house →</span></a>' +
+          '<a class="card" href="#group-hire"><h3>Hire the house</h3><p>For groups and facilitators whose purpose fits. We will say whether the use belongs here.</p><span class="meta">Enquire →</span></a>' +
+          '<a class="card" href="#book"><h3>Book</h3><p>Stays, Check In and listed weekends use Book. Hire uses its own enquiry.</p><span class="meta">Book →</span></a>' +
+        "</div>" +
+      "</div></section>"
     );
   },
   "check-in": function () {

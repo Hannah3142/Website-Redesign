@@ -23,8 +23,8 @@
 
   <main>
     <section class="block">
-      <p>A draft from Hannah. I am not a bookings expert. Please ask Harper Digital before a final decision.</p>
-      <p>The aim is a system the Trust does not pay to keep running. There is no monthly Humanitix fee. Stay option A also has no software fee. Stay option B is the exception: the Trust would pay for a live calendar.</p>
+      <p>This is just a draft from me (Hannah), but because I am not an expert please ask Harper Digital for their professional advice before making any decisions. Prices below are ballparks for September 2026 — confirm with each vendor.</p>
+      <p>The first draft aimed at a system the Trust does not pay to keep running. There is no monthly Humanitix fee. Stay option A also has no software fee. Stay option B is the exception: the Trust would pay for a live calendar.</p>
       <p>When someone pays, they can <strong>pay online</strong> (card or Humanitix) and <strong>cover the platform fees themselves</strong>, so Te Wāhi Ora still receives the listed price. Or they can <strong>transfer to the Trust’s bank account</strong>. Bank transfer has no extra fees for anyone. Staff still mark those bookings as paid.</p>
       <p><strong>Events and Check Ins</strong> use Humanitix (charity rate), embedded on the website. Humanitix is only for the programme or the free RSVP — not for beds. The guest pays Humanitix’s small fee on paid tickets; the Trust still keeps the ticket price. Free Check In RSVPs cost nothing. Humanitix giving its own profits to other charities does not change what Te Wāhi Ora receives, so it is not a money decision for the Trust.</p>
       <p><strong>Every bed</strong> (rest stay, Check In overnight, or staying for an event) goes through <strong>one stay system</strong>, at the same rates — from $180 a night including meals, or $60 for a day stay. Choose A (form and emails, no software fee) or B (live calendar, the Trust pays for that software).</p>
@@ -217,9 +217,9 @@
             <td>The calendar blocks nights itself</td>
           </tr>
           <tr>
-            <td>Staff time</td>
-            <td>More email, especially on bank transfer</td>
-            <td>Less diary work for ordinary stays</td>
+            <td>Staff time vs now</td>
+            <td>About the same for beds (still a form, diary and emails). A little more overall: learn Humanitix, and paid events have a ticket list they do not have today.</td>
+            <td>Less diary work for ordinary stays (the calendar holds the nights). A little more at first for Humanitix, same as A.</td>
           </tr>
         </tbody>
       </table>
@@ -266,12 +266,88 @@
       </table>
     </section>
 
+    <section class="block" id="now">
+      <h2>Compared with what they do now</h2>
+      <p>Now: a WordPress stay form or an email to bookings. Staff check the diary and reply. Payment is bank transfer (the live site still says no cards). Check In is a separate RSVP (form or email). If she also wants a bed, she emails bookings as well. Events are pages plus contact — not a ticket shop.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Work</th>
+            <th>Now</th>
+            <th>This proposal (A + Humanitix)</th>
+            <th>This proposal (B + Humanitix)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A rest stay / a bed</td>
+            <td>Read the form or email, check the diary, reply, wait for a bank transfer, mark it paid.</td>
+            <td><strong>Same work.</strong> Still a request, still the diary, still mark paid. Card payment is extra only if she chooses it (then confirm in Stripe as well as the diary).</td>
+            <td><strong>Less work</strong> on ordinary stays: she picks free nights; the calendar blocks them. Bank transfer still needs someone to mark paid.</td>
+          </tr>
+          <tr>
+            <td>Check In (day, free)</td>
+            <td>RSVP form or email. Staff make a list.</td>
+            <td><strong>Different tool, similar work</strong> once it is set up: Humanitix holds the list instead of the inbox. A little more work the first month (new login).</td>
+            <td>Same as A for Check In.</td>
+          </tr>
+          <tr>
+            <td>Check In or event + a bed</td>
+            <td>Already two steps: RSVP, then email bookings for the room.</td>
+            <td><strong>Same split</strong> — Humanitix for the programme, stay system for the bed. Not a new kind of double handling.</td>
+            <td>Same split; the bed half is easier if the calendar is live.</td>
+          </tr>
+          <tr>
+            <td>Paid themed weekend (programme)</td>
+            <td>Page plus email/contact. No public ticket checkout.</td>
+            <td><strong>More work than now</strong> (Humanitix event to set up and check), in return for a proper attendee and payment list.</td>
+            <td>Same as A for the programme; beds as B.</td>
+          </tr>
+          <tr>
+            <td>Hire</td>
+            <td>Email, decide if it fits, bank transfer.</td>
+            <td><strong>Same.</strong></td>
+            <td><strong>Same.</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Net:</strong> A + Humanitix is not a lighter week for the house. Beds are about the same; Check In is a different inbox; paid events add a tool they do not run today. B is the only version that reduces stay admin. What you buy with A is a more professional front (cards, embedded RSVP/tickets), not fewer emails.</p>
+    </section>
+
     <section class="block" id="next">
       <h2>Still to decide</h2>
       <ul>
-        <li>Stay system A or B.</li>
+        <li>Stay A (same bed work as now, more professional for the guest) or stay B (less diary work, Trust pays for the calendar).</li>
         <li>How long to hold an unpaid bank-transfer booking (for example five days), so beds are not blocked forever.</li>
       </ul>
+    </section>
+
+    <section class="block" id="switch">
+      <h2>Would switching be good or bad?</h2>
+      <p>Switching means leaving “email us / fill the form / bank transfer only” for this proposal (Humanitix for events and Check In, plus stay A or B for beds).</p>
+      <div class="split">
+        <div>
+          <h3>Good</h3>
+          <ul>
+            <li>Looks more professional for the woman booking: cards, an embedded RSVP or ticket, no cheque, less “email us to see if we have a room.”</li>
+            <li>The Trust can still be paid the listed price (she covers card or Humanitix fees, or she uses bank transfer with no extra fees).</li>
+            <li>Check In and paid events get a real attendee list, instead of a pile of emails.</li>
+            <li>Every bed still sits in one stay system — that part does not get messier.</li>
+            <li>Stay B is the version that actually cuts diary work on ordinary nights.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Bad</h3>
+          <ul>
+            <li>Stay A is not less work for the house. Beds stay a form, a diary and emails. Humanitix is a new login. Paid events take more setup than a contact page.</li>
+            <li>Someone has to learn and keep two tools (Humanitix plus the stay form or calendar).</li>
+            <li>A woman who wants the programme and a bed still books twice — same as Check In now.</li>
+            <li>Stay B costs money every month. A does not, but then you mostly bought a nicer front, not a lighter week.</li>
+            <li>Online payers pay a small platform fee. Bank transfer stays the no-fee path.</li>
+          </ul>
+        </div>
+      </div>
+      <p><strong>Worth switching</strong> if they want the site to take money and RSVPs like a current retreat, or if they will pay for B to stop chasing the diary. <strong>Not worth switching</strong> if the only aim is less admin and they would pick A — that is the same job with extra software.</p>
     </section>
   </main>
 </body>
