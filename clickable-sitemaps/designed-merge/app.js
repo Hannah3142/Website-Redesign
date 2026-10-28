@@ -55,31 +55,39 @@ var VOICES = [
 var ROOMS = [
   {
     id: "room-seaview",
-    title: "Sea View / Daisy",
+    title: "Sea View",
     rate: "$260 a night including meals",
     img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
-    blurb: "The sea-facing room. Linen, three meals, tea and coffee. Placeholder — this page is not final."
+    blurb: "Ensuite, double bed, a deck to the Tasman. The house also calls it Daisy.",
+    feel: "The sea in the window. Private, spacious, a soak in the house bath if you want it.",
+    bath: "Your own ensuite."
   },
   {
     id: "room-garden",
     title: "Garden Room",
-    rate: "From $180 a night including meals",
+    rate: "$180 a night including meals",
     img: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=80",
-    blurb: "A quieter room toward the garden. Linen, three meals, tea and coffee. Placeholder — this page is not final."
+    blurb: "A cosy single in the house, garden deck, near the bathroom. The kitchen is close — lively, not silent.",
+    feel: "Close to the hub of the house. Best if you like being near people; less so if you need hush.",
+    bath: "In the house, close by."
   },
   {
     id: "room-chalet",
     title: "Garden Chalet",
     rate: "$195 a night including meals",
-    img: "https://images.unsplash.com/photo-1505691938895-1758d7a9f7e1?auto=format&fit=crop&w=1200&q=80",
-    blurb: "A chalet in the garden. Linen, three meals, tea and coffee. Placeholder — this page is not final."
+    img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+    blurb: "Your own chalet in the garden — single bed, desk, armchair. Shared bathroom a few steps away.",
+    feel: "A little house of your own among the trees. Quiet, private, not inside the main house.",
+    bath: "Shared, a few steps outside."
   },
   {
     id: "room-caravan",
     title: "Retro Caravan",
     rate: "$195 a night including meals",
     img: "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?auto=format&fit=crop&w=1200&q=80",
-    blurb: "The caravan in the garden. Linen, three meals, tea and coffee. Placeholder — this page is not final."
+    blurb: "A redecorated caravan in the garden — double bed, nostalgic, the sea close by. Shared bathroom.",
+    feel: "Sleep in a caravan by the sea. Simple, a little playful, still looked after.",
+    bath: "Shared, a few steps outside."
   }
 ];
 
@@ -152,6 +160,7 @@ function headerNav() {
         '<a href="#what-we-offer"' + allCurrent + ">Overview</a>" +
         '<a href="#check-in"' + checkInCurrent + ">Check In weekend</a>" +
         eventLinks +
+        '<a href="#what-we-offer">Gift vouchers &amp; cookbook</a>' +
       "</div>" +
     "</div>" +
     '<a href="#about" class="' + cls("about").trim() + '">About us</a>' +
@@ -202,8 +211,9 @@ function footerHtml() {
           "<li>" + icon("mail") + '<a href="mailto:tewahiora@gmail.com">tewahiora@gmail.com</a></li>' +
           "<li>" + icon("phone") + "<span>022 078 5757 · 09 812 8775</span></li>" +
         "</ul>" +
+        '<p class="footer-policy"><a href="#cancellation">Cancellation policy</a></p>' +
         socialLinks("footer-social") +
-        '<p><a href="#cancellation">Cancellation policy</a></p></div>' +
+      "</div>" +
       "<div><h2>Need to talk?</h2>" +
         "<p>Te Wāhi Ora is not a clinical service and is not staffed by medical professionals. Rest, meals and other women — the fence at the top of the cliff, not the ambulance at the bottom.</p>" +
       "</div>" +
@@ -271,24 +281,326 @@ function articlePage(item) {
   );
 }
 
-function weekendGlance() {
+function glanceBoard(title, img, days, cta, lede) {
+  var items = days.map(function (day, i) {
+    var rows = day.rows.map(function (row) {
+      if (row && row.need) {
+        return (
+          '<li class="glance-slot">' +
+            '<span class="glance-time">' + (row.when || "—") + "</span>" +
+            '<p class="glance-need">' + row.need + "</p>" +
+          "</li>"
+        );
+      }
+      if (!row || (!row.when && !row.what)) {
+        return (
+          '<li class="glance-slot">' +
+            '<span class="glance-time">—</span>' +
+            '<p class="glance-need">Need: the clock time, and what happens here.</p>' +
+          "</li>"
+        );
+      }
+      return (
+        "<li>" +
+          '<span class="glance-time">' + (row.when || "") + "</span>" +
+          "<p>" + (row.what || "") + "</p>" +
+        "</li>"
+      );
+    }).join("");
+    return (
+      '<li class="glance-break' + (i === 0 ? " is-first" : "") + '"><span>' + day.title + "</span></li>" +
+      rows
+    );
+  }).join("");
   return (
-    '<div class="weekend-glance">' +
-      "<article><strong>Friday</strong><p>Arrive from about 4pm. Settle into your room, walk to the beach if you like, dinner at the table.</p></article>" +
-      "<article><strong>Saturday</strong><p>Breakfast, lunch and dinner cooked for you. The day is yours — rest, the sand, or a programme if you came for one.</p></article>" +
-      "<article><strong>Sunday</strong><p>Breakfast, a last walk if you want it, lunch, leave around 2pm. Weekends are Friday and Saturday nights (two nights minimum).</p></article>" +
+    '<div class="glance-split">' +
+      '<img alt="" src="' + img + '">' +
+      '<div class="glance-copy">' +
+        '<h3 class="glance-heading">' + title + "</h3>" +
+        (lede ? '<div class="glance-lede">' + lede + "</div>" : "") +
+        '<ol class="glance-times">' + items + "</ol>" +
+        (cta ? '<div class="actions glance-cta">' + cta + "</div>" : "") +
+      "</div>" +
     "</div>"
   );
 }
 
-function checkInGlance() {
+function glanceCols(days) {
   return (
     '<div class="weekend-glance">' +
-      "<article><strong>10:00</strong><p>Arrive and morning tea.</p></article>" +
-      "<article><strong>10:30</strong><p>A theme for the day. Time with a Listener, or time alone. Simple lunch.</p></article>" +
-      "<article><strong>Around 2:15</strong><p>Home — unless you are staying overnight in the house at the usual rates.</p></article>" +
+      days.map(function (day) {
+        var rows = day.rows.map(function (row) {
+          return '<li><span class="glance-when">' + row.when + '</span><span class="glance-what">' + row.what + "</span></li>";
+        }).join("");
+        return (
+          "<article>" +
+            '<p class="glance-label">' + day.label + "</p>" +
+            "<h3>" + day.title + "</h3>" +
+            '<ul class="glance-list">' + rows + "</ul>" +
+          "</article>"
+        );
+      }).join("") +
     "</div>"
   );
+}
+
+function weekendGlance() {
+  return glanceCols([
+    {
+      label: "Day 1",
+      title: "Friday",
+      rows: [
+        { when: "From 4:00pm", what: "Arrive, settle into your room." },
+        { when: "Afternoon", what: "Walk to the black sand if you like." },
+        { when: "Evening", what: "Dinner at the table. The house is yours." }
+      ]
+    },
+    {
+      label: "Day 2",
+      title: "Saturday",
+      rows: [
+        { when: "Morning", what: "Breakfast at your own rhythm." },
+        { when: "The day", what: "Rest, Waitākere bush, the Tasman, or nothing at all." },
+        { when: "Meals", what: "Lunch and dinner cooked for you." }
+      ]
+    },
+    {
+      label: "Going home",
+      title: "Sunday",
+      rows: [
+        { when: "Morning", what: "Breakfast, and a last walk if you want it." },
+        { when: "Lunch", what: "At the table." },
+        { when: "Around 2:00pm", what: "Time to go. Weekends are Friday and Saturday nights — two nights — so you have time to arrive." }
+      ]
+    }
+  ]);
+}
+
+function timeGlance() {
+  return glanceCols([
+    { label: "Whenever you wake", title: "Morning", rows: [
+      { when: "No programme", what: "Tea, the garden, the Tasman — or stay in bed." }
+    ]},
+    { label: "The table", title: "Meals", rows: [
+      { when: "Cooked for you", what: "Other women, or quiet. Lunch if you came for the day; dinner if you are sleeping here." }
+    ]},
+    { label: "When you are ready", title: "Leaving", rows: [
+      { when: "About 2:00pm", what: "After lunch, if you stayed the night." },
+      { when: "By 5:30pm", what: "If you came for the day." }
+    ]}
+  ]);
+}
+
+function stayInvite() {
+  return (
+    '<section class="home-panel home-panel-foam"><div class="wrap home-split">' +
+      "<div>" +
+        '<p class="kicker">You are welcome</p>' +
+        "<h2 class=\"section-title\">You can still come.</h2>" +
+        '<p class="section-sub">even if money is tight.</p>' +
+        "<p>Most women arrive alone. Overnight is from $180, with meals. A day is $60. If that is more than you can pay, write to us — we will try to arrange something that fits. Sometimes the whole stay can be covered.</p>" +
+        '<div class="actions">' + btn("Enquire", "#contact", "btn-clay") + "</div>" +
+      "</div>" +
+      '<img alt="" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1000&q=80">' +
+    "</div></section>"
+  );
+}
+
+function overnightLede() {
+  return (
+    "<p>You can sleep here any night of the week. Monday, Thursday — it does not have to be a weekend. One night is a stay. Meals are included.</p>" +
+    "<p>Weekends are the only extra rule: you book Friday night and Saturday night together. That is so Saturday is a whole day in the house, not a rush. After a weekend you leave Sunday after lunch, about 2pm.</p>"
+  );
+}
+
+function overnightDays() {
+  return [
+    {
+      title: "Day 1",
+      rows: [
+        { when: "4:00pm", what: "The house is ready from about 4pm. Settle into your room, have a cup of tea, walk to the black sand if you have the energy." },
+        { when: "Afternoon", what: "The garden, or over the dunes to the beach. Nothing is scheduled. You do not have to go anywhere." },
+        { when: "—", need: "Dinner time. Meals are cooked — what clock do they sit down?" }
+      ]
+    },
+    {
+      title: "Day 2",
+      rows: [
+        { when: "—", need: "Breakfast time. Live site says personally chosen, at leisure, sometimes brought to the room." },
+        { when: "The day", what: "There is no programme. Bush, the beach, a book, or nothing at all. Lunch and dinner still appear." },
+        { when: "—", need: "Lunch time on a weekday stay." },
+        { when: "—", need: "Weekday check-out. A night is priced as 24 hours — confirm if she leaves after lunch, or 24 hours after 4pm." },
+        { when: "2:00pm", what: "If you came for the weekend: Sunday after lunch is time to leave." }
+      ]
+    }
+  ];
+}
+
+function dayStayDays() {
+  return [
+    {
+      title: "Morning",
+      rows: [
+        { when: "9:30am", what: "Arrive. Tea, the garden, the black sand — or sit until you are ready to move." },
+        { when: "—", need: "Anything timed before lunch, or is 9:30am until lunch unstructured?" }
+      ]
+    },
+    {
+      title: "Midday",
+      rows: [
+        { when: "—", need: "Lunch time for a day stay. $60 includes lunch at the table." },
+        { when: "If you like", what: "A Listener, massage or Reiki — extra, arranged if you ask. Or a book and the deck. You can also do nothing." }
+      ]
+    },
+    {
+      title: "Leaving",
+      rows: [
+        { when: "—", need: "The afternoon until 5:30pm — rest, beach, extras?" },
+        { when: "5:30pm", what: "Time to leave." }
+      ]
+    }
+  ];
+}
+
+function eventDays() {
+  return [
+    {
+      title: "Morning",
+      rows: [
+        { when: "10:00am", what: "Arrive. Morning tea with other women. There is no course to complete." },
+        { when: "10:30am", what: "A theme for the day. Time with a Listener if you want to talk, or time alone if you don’t." },
+        { when: "—", need: "What fills 10:30am until lunch — a second session, beach, rest?" }
+      ]
+    },
+    {
+      title: "Lunch",
+      rows: [
+        { when: "1:15pm", what: "Light lunch at the table, until about 2:00pm." }
+      ]
+    },
+    {
+      title: "Leaving",
+      rows: [
+        { when: "—", need: "Anything after lunch, or is lunch the close of the day?" },
+        { when: "2:00pm", what: "The gathering ends. Time to leave — or sleep here, at the usual stay rate." }
+      ]
+    }
+  ];
+}
+
+function timeHere() {
+  return (
+    '<section class="home-panel home-panel-foam"><div class="wrap">' +
+      '<p class="kicker">Your time here</p>' +
+      "<h2 class=\"section-title\">How a stay unfolds.</h2>" +
+      '<div class="stay-tabs time-here">' +
+        '<div class="tab-bar" role="tablist">' +
+          '<button type="button" class="is-on" data-tab="overnight" aria-selected="true">Overnight</button>' +
+          '<button type="button" data-tab="day" aria-selected="false">Day stay</button>' +
+          '<button type="button" data-tab="event" aria-selected="false">Event</button>' +
+        "</div>" +
+        '<div class="tab-panel" data-panel="overnight">' +
+          glanceBoard(
+            "A night at a glance",
+            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+            overnightDays(),
+            btn("Book a stay", "#book", "btn-clay"),
+            overnightLede()
+          ) +
+        "</div>" +
+        '<div class="tab-panel" data-panel="day" hidden>' +
+          glanceBoard(
+            "Your day at a glance",
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+            dayStayDays(),
+            btn("Book a day", "#book", "btn-clay"),
+            "<p>Come for the day — not a night. About 9:30am until 5:30pm. $60, including lunch.</p>"
+          ) +
+        "</div>" +
+        '<div class="tab-panel" data-panel="event" hidden>' +
+          glanceBoard(
+            "A Check In at a glance",
+            "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
+            eventDays(),
+            btn("What’s on", "#what-we-offer", "btn-clay"),
+            "<p>A monthly gathering, 10am until 2pm, Saturday or Sunday of the last weekend. The day is free. A bed that night is the usual stay rate.</p>"
+          ) +
+        "</div>" +
+      "</div>" +
+    "</div></section>"
+  );
+}
+
+function comeStayTry() {
+  return (
+    '<section class="come-try" id="ways-to-come">' +
+      '<div class="wrap">' +
+        '<p class="kicker">Ways to come</p>' +
+        '<h2 class="section-title">A night, a day, or a gathering.</h2>' +
+        "<p class=\"section-intro\">Pick overnight, a day, a Check In, or hire. The line under the tab is what this way of coming is. The timetable is what those hours look like.</p>" +
+        '<div class="come-try-box">' +
+          '<div class="stay-tabs time-here">' +
+            '<div class="tab-bar" role="tablist">' +
+              '<button type="button" class="is-on" data-tab="overnight" aria-selected="true">Overnight</button>' +
+              '<button type="button" data-tab="day" aria-selected="false">Day stay</button>' +
+              '<button type="button" data-tab="event" aria-selected="false">Event</button>' +
+              '<button type="button" data-tab="hire" aria-selected="false">Hire</button>' +
+            "</div>" +
+            '<div class="tab-panel" data-panel="overnight">' +
+              '<p class="come-try-lead"><strong>A bed and meals, no programme.</strong> From $180 a night. Any night of the week. A weekend is Friday night and Saturday night together.</p>' +
+              glanceBoard(
+                "From about 4pm, until you leave",
+                "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=80",
+                overnightDays(),
+                btn("Book a stay", "#book", "btn-clay"),
+                overnightLede()
+              ) +
+            "</div>" +
+            '<div class="tab-panel" data-panel="day" hidden>' +
+              '<p class="come-try-lead"><strong>A day in the house, not a bed.</strong> About 9:30am until 5:30pm. $60, including lunch.</p>' +
+              glanceBoard(
+                "9:30am until 5:30pm",
+                "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+                dayStayDays(),
+                btn("Book a day", "#book", "btn-clay"),
+                ""
+              ) +
+            "</div>" +
+            '<div class="tab-panel" data-panel="event" hidden>' +
+              '<p class="come-try-lead"><strong>A Check In, or a themed gathering.</strong> Check In is free as a day visitor, last weekend of the month. A bed that night is the usual stay rate.</p>' +
+              glanceBoard(
+                "10am until 2pm",
+                "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
+                eventDays(),
+                btn("What’s on", "#what-we-offer", "btn-clay"),
+                ""
+              ) +
+            "</div>" +
+            '<div class="tab-panel" data-panel="hire" hidden>' +
+              '<p class="come-try-lead"><strong>The house for a group of women.</strong> Purpose needs to fit rest, healing or learning — not a party house.</p>' +
+              '<div class="glance-split">' +
+                '<img alt="" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80">' +
+                "<div class=\"glance-copy\">" +
+                  '<h3 class="glance-heading">Dates, meals and rooms, agreed together</h3>' +
+                  "<p class=\"glance-lede\">There is no public timetable. You shape the days with the house. Use the hire enquiry — not the stay form.</p>" +
+                  '<div class="actions glance-cta">' + btn("Hire enquiry", "#group-hire", "btn-clay") + "</div>" +
+                "</div>" +
+              "</div>" +
+            "</div>" +
+          "</div>" +
+        "</div>" +
+      "</div>" +
+    "</section>"
+  );
+}
+
+function checkInGlance() {
+  return glanceCols([
+    { label: "Arrive", title: "10:00am", rows: [{ when: "Morning tea", what: "Other women, no course to complete." }] },
+    { label: "The day", title: "10:30am", rows: [{ when: "A theme", what: "Time with a Listener, or time alone." }] },
+    { label: "Lunch", title: "1:15pm", rows: [{ when: "Light lunch", what: "At the table, until about 2:00pm." }] },
+    { label: "Going home", title: "2:00pm", rows: [{ when: "Unless you sleep here", what: "Overnight is at the usual stay rates." }] }
+  ]);
 }
 
 function stayTabs(includeHire) {
@@ -308,7 +620,7 @@ function stayTabs(includeHire) {
       "</div>" +
       '<div class="tab-panel" data-panel="overnight">' +
         "<h3>Overnight</h3>" +
-        "<p>A woman sleeping here, with or without a programme. From $180 a night including meals. Sea View / Daisy $260. Chalets and caravan $195. Linen, three meals, tea and coffee.</p>" +
+        "<p>A woman sleeping here, with or without a programme. From $180 a night including meals. Sea View $260. Chalets and caravan $195. Linen, three meals, tea and coffee.</p>" +
         '<img alt="A bedroom" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=80" style="width:100%;margin:1rem 0;border-radius:12px">' +
         "<p>Weekends: Friday and Saturday nights. If cost is hard, ask about a $140 subsidy or the Wynsome Fund.</p>" +
         '<p class="kicker">Your weekend at a glance</p>' +
@@ -369,7 +681,7 @@ function faqItem(question, answer, open) {
   return (
     "<details" + (open ? " open" : "") + ">" +
       "<summary>" + question + "</summary>" +
-      '<div class="faq-panel"><div class="faq-panel-inner"><p>' + answer + "</p></div></div>" +
+      '<div class="faq-panel"><div class="faq-panel-inner">' + answer + "</div></div>" +
     "</details>"
   );
 }
@@ -378,12 +690,18 @@ function faqBlock() {
   return (
     '<section class="home-faq"><div class="wrap faq">' +
       '<p class="kicker">Questions</p><h2 class="section-title">Before you come</h2>' +
-      faqItem("Can I come without an event?", "Yes. Many women come only to rest. Book a stay for a night, several nights, or a day.", true) +
-      faqItem("If I join a weekend, is that overnight or a day?", "Overnight means you sleep here (weekends: Friday and Saturday nights). A day stay is about 9:30am–5:30pm.") +
-      faqItem("Can I come alone?", "Yes. Most women do.") +
-      faqItem("What if I have a disability?", 'Please enquire so we can talk through access and what would help. Email <a href="mailto:tewahiora@gmail.com">tewahiora@gmail.com</a>.') +
-      faqItem("What if I cannot pay the full rate?", "Ask. Subsidised rates and the Wynsome Fund exist so cost is not the only door.") +
-      faqItem("Is Te Wāhi Ora a clinical service?", "No. We are not a clinical facility and we are not staffed by medical professionals. The house is rest, meals and other women — the fence at the top of the cliff, not the ambulance at the bottom. Helpline numbers are in the footer if you need to talk now.") +
+      faqItem("Can I come without an event?", "<p>Yes. Many women come only to rest. Book a stay for a night, several nights, or a day.</p>", true) +
+      faqItem("If I join a weekend, is that overnight or a day?", "<p>Overnight means you sleep here (weekends: Friday and Saturday nights). A day stay is about 9:30am–5:30pm.</p>") +
+      faqItem("Can I come alone?", "<p>Yes. Most women do.</p>") +
+      faqItem("What if I have a disability?", '<p>Please enquire so we can talk through access and what would help. Email <a href="mailto:tewahiora@gmail.com">tewahiora@gmail.com</a>.</p>') +
+      faqItem("What if I cannot pay the full rate?", "<p>Write to us. We will try to arrange something that fits — sometimes the whole stay can be covered.</p>") +
+      faqItem(
+        "What if I need to cancel?",
+        "<p>Life changes. If you cannot come, write as soon as you can — they make up the bed and buy the food with you in mind, so a little notice helps.</p>" +
+        "<p>Seven days or more before you arrive, your money can usually go toward another date, or come back to you less a small fee. Inside seven days the deposit may be lost; the rest can often still be moved or returned. If something sudden happens, tell them. They will talk it through.</p>" +
+        '<p><a class="faq-policy-link" href="#cancellation">Read the cancellation policy</a></p>'
+      ) +
+      faqItem("Is Te Wāhi Ora a clinical service?", "<p>No. We are not a clinical facility and we are not staffed by medical professionals. The house is rest, meals and other women — the fence at the top of the cliff, not the ambulance at the bottom. Helpline numbers are in the footer if you need to talk now.</p>") +
     "</div></section>"
   );
 }
@@ -400,6 +718,12 @@ function supportPage() {
         '<div class="card"><h3>Wynsome Fund</h3><p class="subhead">Fund a stay — so another woman can come.</p><p>Named for Wynsome Diprose. Your gift helps a woman stay who could not otherwise pay.</p>' + btn("Fund a stay", "#support", "btn-solid") + "</div>" +
         '<div class="card"><h3>Time</h3><p>Garden, kitchen, overnight cover, admin. ' + LOREM + "</p>" + btn("Volunteer", "#contact", "btn-line") + "</div>" +
         '<div class="card"><h3>Bequests</h3><p>A gift in a will. ' + LOREM + "</p>" + btn("Ask us", "#contact", "btn-line") + "</div>" +
+      "</div>" +
+      "<h2 class=\"section-title\" style=\"margin-top:2.4rem\">Cookbook and vouchers</h2>" +
+      "<p class=\"lede-block\">Gifts from the house — not part of booking a stay. The cookbook is digital; vouchers can be digital or printed.</p>" +
+      '<div class="grid grid-2">' +
+        '<div class="card"><h3>Cookbook</h3><p>$20 plus postage. Recipes from the table. Proceeds go to the Trust, and help them help other women.</p>' + btn("Buy the cookbook", "#nourishment", "btn-line") + "</div>" +
+        '<div class="card"><h3>Gift vouchers</h3><p>Give a night, a day, or a contribution toward a stay. Digital or printed.</p>' + btn("Ask about a voucher", "#contact", "btn-line") + "</div>" +
       "</div>" +
       "<h2 class=\"section-title\" style=\"margin-top:2.4rem\">Thank you</h2>" +
       "<p class=\"lede-block\">People, trusts and organisations who keep the door open would be named here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere cubilia Curae; Donec id elit non mi porta gravida at eget metus.</p>" +
@@ -418,71 +742,87 @@ var PAGES = {
       '<section class="hero"><div class="hero-inner">' +
         '<p class="eyebrow">Welcome · Piha · women for women</p>' +
         "<h1>A place to belong to while moving into wholeness.</h1>" +
-        "<p class=\"lede\">A charitable retreat by the Tasman: rest, meals, and the company of other women — for a night, a day, or a gathering.</p>" +
-        '<div class="actions">' + btn("What we offer", "#what-we-offer", "btn-ghost") + btn("Book", "#book", "btn-primary") + "</div>" +
+        "<p class=\"lede\">If you are tired, carrying too much, or you simply want a break — come. Meals appear, the Tasman is at the door, and you do not have to hold it all alone.</p>" +
+        '<div class="actions">' +
+          '<a class="btn btn-ghost" href="#home" data-jump="ways-to-come">Choose what fits</a>' +
+          btn("Book", "#book", "btn-primary") +
+        "</div>" +
       "</div></section>" +
-      '<section class="home-ways"><div class="wrap">' +
+      '<section class="home-ways" id="ways-to-come"><div class="wrap">' +
         '<p class="kicker">Four ways to come</p>' +
         "<h2 class=\"section-title\">Choose what fits.</h2>" +
+        "<p class=\"section-intro\">A night in the house, a day to put things down, a gathering with other women, or the house for your group. You do not have to be in crisis to come.</p>" +
         '<div class="grid grid-4">' +
           '<a class="card card-photo" href="#retreats"><img alt="" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"><h3>Retreats &amp; Stay</h3><p>Rest without a programme. Overnight or a day. Meals included.</p><span class="meta">See rooms and food →</span></a>' +
           '<a class="card card-photo" href="#check-in"><img alt="" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80"><h3>Check In weekend</h3><p>Free monthly gathering. Next: Saturday 26 or Sunday 27 September 2026.</p><span class="meta">Next dates →</span></a>' +
           '<a class="card card-photo" href="#what-we-offer"><img alt="" src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80"><h3>Events</h3><p>Small themed weekends — writing, grief, nature, and more.</p><span class="meta">See the diary →</span></a>' +
-          '<a class="card card-photo" href="#group-hire"><img alt="" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80"><h3>Hire the house</h3><p>For groups and facilitators whose purpose fits the Trust.</p><span class="meta">Enquire →</span></a>' +
+          '<a class="card card-photo" href="#group-hire"><img alt="" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80"><h3>Hire the house</h3><p>For groups of women whose gathering belongs here.</p><span class="meta">Enquire →</span></a>' +
         "</div></div></section>" +
-      '<section class="home-panel home-panel-foam"><div class="wrap home-split">' +
-        "<div>" +
-          '<p class="kicker">Stay and subsidy</p>' +
-          "<h2 class=\"section-title\">Come to stay</h2>" +
-          '<p class="section-sub">even if the full rate is hard.</p>' +
-          "<p>You can come alone — most women do. A weekend is Friday and Saturday nights. Paying the full rate helps another woman come.</p>" +
-          '<div class="home-facts">' +
-            "<div><p class=\"home-facts-value\">From $180</p><p class=\"home-facts-label\">Overnight</p><p>Meals included</p></div>" +
-            "<div><p class=\"home-facts-value\">$60</p><p class=\"home-facts-label\">Day stay</p><p>About 9:30am–5:30pm</p></div>" +
-            "<div class=\"home-facts-ask\"><p class=\"home-facts-value\">Ask</p><p class=\"home-facts-label\">If cost is hard</p><p>Subsidy or Wynsome Fund</p></div>" +
-          "</div>" +
-          '<div class="actions">' + btn("See stay options", "#retreats", "btn-line") + btn("Book", "#book", "btn-solid") + "</div>" +
-        "</div>" +
-        '<img alt="" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1000&q=80">' +
-      "</div></section>" +
+      stayInvite() +
       '<section class="home-panel home-panel-white"><div class="wrap home-center">' +
-        '<blockquote class="quote">“I walked into Te Wāhi Ora alone. Happily alone. And because of this I have been able to experience one of the deepest, most wonderful experiences I’ve had.”</blockquote>' +
+        '<p class="kicker">From women who came</p>' +
+        '<blockquote class="quote">“I walked into Te Wāhi Ora alone. Happily alone. And because of this I have been able to experience one of the deepest, most wonderful experiences I’ve had.”<cite>A woman who stayed</cite></blockquote>' +
       "</div></section>" +
       faqBlock() +
       '<section class="home-support"><div class="wrap home-center">' +
         '<p class="kicker">Support</p>' +
-        "<h2 class=\"section-title\">Keep this place going</h2>" +
-        "<p>Donations and time make meals, staff, and funded stays possible.</p>" +
-        '<div class="actions">' + btn("Support us", "#support", "btn-solid") + "</div>" +
+        "<h2 class=\"section-title\">Keep the table set</h2>" +
+        "<p>Fees do not cover everything. A donation or a gift voucher helps keep the door open. Cookbook sales go to the Trust, and help them help other women.</p>" +
+        '<div class="actions">' + btn("Support us", "#support", "btn-clay") + "</div>" +
       "</div></section>"
     );
   },
   retreats: function () {
     var roomCards = ROOMS.map(function (room) {
-      return '<a class="card" href="#' + room.id + '"><img alt="" src="' + room.img + '"><p class="meta">' + room.rate + "</p><h3>" + room.title + "</h3><p>" + room.blurb + '</p><span class="meta">See this room →</span></a>';
+      var price = (room.rate.match(/^\$\d+/) || [""])[0];
+      return (
+        '<article>' +
+          '<a class="room-pic" href="#' + room.id + '"><img alt="" src="' + room.img + '"></a>' +
+          '<h3><a href="#' + room.id + '">' + room.title + "</a></h3>" +
+          '<p class="room-price">' + price + "</p>" +
+          '<p class="room-feel">' + room.blurb + "</p>" +
+          '<div class="room-bath">' +
+            "<h4>Bathroom</h4>" +
+            "<p>" + room.bath + "</p>" +
+          "</div>" +
+          '<ul class="room-includes">' +
+            "<li>All meals included</li>" +
+            "<li>Linen included</li>" +
+          "</ul>" +
+          '<a class="room-see" href="#' + room.id + '">See this room <span class="room-see-arrow" aria-hidden="true">→</span></a>' +
+        "</article>"
+      );
     }).join("");
     return (
-      pageHero("Retreats & Stay", "The house, the meals, the beach — whether you come to rest or for a programme.") +
-      '<section class="wrap">' +
-        '<div class="photo-row">' +
-          '<img alt="Ocean and sky" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80">' +
-          '<img alt="Garden path" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80">' +
-          '<img alt="Table and food" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80">' +
+      pageHero("Retreats & Stay", "A bed, a table, and time by the Tasman — with no programme you have to complete.") +
+      stayInvite() +
+      comeStayTry() +
+      '<section class="rooms-section" id="rooms-list"><div class="wrap">' +
+        '<p class="kicker">Rooms</p>' +
+        "<h2 class=\"section-title\">A bed in the house.</h2>" +
+        '<div class="rooms-board">' + roomCards + "</div>" +
+      "</div></section>" +
+      '<section class="stay-nourish"><div class="wrap home-split">' +
+        '<img alt="" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1000&q=80">' +
+        "<div>" +
+          '<p class="kicker">Nourishment</p>' +
+          "<h2 class=\"section-title\">Meals appear. Dishes disappear.</h2>" +
+          "<p>Women cook for women — with love, and with the garden when it gives. Breakfast at your own rhythm, sometimes in your room. Lunch in the garden or on the deck above the surf. Dinner upstairs in summer; by the fire in winter.</p>" +
+          "<p>You do not lift a finger. Overnight includes three meals, snacks, fruit, tea and coffee. A day includes lunch and snacks. Tell us what you cannot eat when you write — most diets can be met (a small extra for gluten-free, dairy-free or vegan).</p>" +
+          '<div class="actions">' + btn("Nourishment", "#nourishment", "btn-line") + btn("Cookbook", "#nourishment", "btn-clay") + "</div>" +
         "</div>" +
-        "<p class=\"lede-block\">This is the house you sleep in and the table you eat at. " + LOREM + "</p>" +
-        "<h2 class=\"section-title\">Choose how you stay</h2>" +
-        stayTabs(true) +
-        '<p class="kicker" style="margin-top:2.2rem">Rooms</p>' +
-        "<h2 class=\"section-title\">A page for each room.</h2>" +
-        "<p class=\"lede-block\">Not final — placeholders so we can see how a room sits in the tree.</p>" +
-        '<div class="grid grid-2">' + roomCards + "</div>" +
-        '<div class="grid grid-2" style="margin-top:1.1rem">' +
-          '<a class="card" href="#nourishment"><h3>Nourishment</h3><p>Meals are part of the care, not a hotel extra.</p><span class="meta">See food →</span></a>' +
-          '<a class="card" href="#group-hire"><h3>Hire the house</h3><p>For groups whose purpose fits. Enquiry, not Book.</p><span class="meta">Enquire →</span></a>' +
+      "</div></section>" +
+      '<section class="home-panel home-panel-white"><div class="wrap">' +
+        '<p class="kicker">While you are here</p>' +
+        "<h2 class=\"section-title\">Bush, black sand, and the sound of the sea.</h2>" +
+        "<p>The house sits in a private garden at Piha. Nature here is not a backdrop — it is how the nervous system settles: sea air, bush, and no programme you have to complete.</p>" +
+        '<div class="stay-here stay-here-4">' +
+          '<article><img alt="" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"><h3>The whenua</h3><p>Black sand over the dunes in front of the house. Lion Rock, the Tasman, Waitākere bush and tracks behind. Fall asleep to the sea. Walk as far as you have energy; come back when you have had enough.</p></article>' +
+          '<article><img alt="" src="https://images.unsplash.com/photo-1474418397713-7ede21d49118?auto=format&fit=crop&w=800&q=80"><h3>A Listener</h3><p>Someone to sit with, if talking would help. You ask when you write. You can also not talk at all.</p></article>' +
+          '<article><img alt="" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80"><h3>Massage or Reiki</h3><p>Optional, extra, arranged if you want them. Hands on the body, or energy work — not assumed, never required.</p></article>' +
+          '<article><img alt="" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80"><h3>The village</h3><p>Piha Store, a café, the Domain. No petrol once you are here; the surf is serious — swim between the flags. Walks worth knowing: Kitekite Falls, Mercer Bay. <a href="https://www.thisispiha.com/" target="_blank" rel="noopener noreferrer">This is Piha</a> is the local’s guide.</p></article>' +
         "</div>" +
-        "<h2 class=\"section-title\" style=\"margin-top:2.2rem\">While you are here</h2>" +
-        "<p class=\"prose\">Optional counselling, massage, Reiki, walks, the black sand. Gift vouchers and the digital cookbook can be bought from this page. For local Piha information we would link out to This is Piha, if they agree.</p>" +
-      "</section>"
+      "</div></section>"
     );
   },
   stay: function () { return PAGES.retreats(); },
@@ -516,6 +856,15 @@ var PAGES = {
           '<a class="card" href="#group-hire"><h3>Hire the house</h3><p>For groups and facilitators whose purpose fits. We will say whether the use belongs here.</p><span class="meta">Enquire →</span></a>' +
           '<a class="card" href="#book"><h3>Book</h3><p>Stays, the Check In weekend and listed events use Book. Hire uses its own enquiry.</p><span class="meta">Book →</span></a>' +
         "</div>" +
+      "</div></section>" +
+      '<section class="home-panel home-panel-foam" id="from-the-house"><div class="wrap">' +
+        '<p class="kicker">From the house</p>' +
+        "<h2 class=\"section-title\">A gift voucher, or the kitchen to take home.</h2>" +
+        "<p class=\"section-intro\">Not a booking — a way to give rest, or to cook the way they cook here.</p>" +
+        '<div class="grid grid-2">' +
+          '<div class="card"><h3>Gift vouchers</h3><p>Give a night, a day, or a contribution toward a stay. Digital or printed — for a woman who needs the door held open.</p><div class="actions card-actions">' + btn("Ask about a voucher", "#contact", "btn-clay") + "</div></div>" +
+          '<div class="card"><h3>Cookbook</h3><p>$20, plus postage. Recipes from the table, to take home. Proceeds go to the Trust, and help them help other women.</p><div class="actions card-actions">' + btn("Buy the cookbook", "#nourishment", "btn-line") + "</div></div>" +
+        "</div>" +
       "</div></section>"
     );
   },
@@ -523,7 +872,7 @@ var PAGES = {
     return (
       pageHero("Check In weekend", "A free monthly gathering — Saturday or Sunday, last weekend of the month.") +
       '<section class="wrap prose">' +
-        "<h2>What it is</h2><p>Women together, without a course to complete. A Listener if you want to talk, the beach if you don’t, lunch at the table. Metaphor this year: air.</p>" +
+        "<h2>What it is</h2><p>Women together, without a course to complete. 10am until 2pm. A Listener if you want to talk, the beach if you don’t, light lunch at 1:15pm. Metaphor this year: air.</p>" +
         "<h2>Who it is for</h2><p>Any woman who wants a supported day among other women. You do not need a crisis to come. " + LOREM + "</p>" +
         "<h2>What happens</h2>" + checkInGlance() +
         "<h2>When</h2><p>Last weekend of each month, March to November. Next: Saturday 26 or Sunday 27 September 2026. Then 31 October / 1 November, and 28 or 29 November.</p>" +
@@ -576,14 +925,16 @@ var PAGES = {
   news: function () { return PAGES.library(); },
   nourishment: function () {
     return (
-      pageHero("Nourishment", "Meals at the table — part of the care, not a hotel extra.") +
+      pageHero("Nourishment", "Meals appear. Dishes disappear.") +
       '<section class="wrap prose">' +
         '<p class="draft-note">Not final</p>' +
         '<img alt="The table" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1200&q=80" style="width:100%;max-width:42rem;margin-bottom:1.2rem;border-radius:12px">' +
-        "<p>" + LOREM_LONG + "</p>" +
-        "<p>Breakfast, lunch and dinner are cooked for overnight guests. A day stay includes lunch and snacks. Tell us dietary needs when you book.</p>" +
-        "<p>" + LOREM + "</p>" +
-        '<div class="actions">' + btn("Book", "#book", "btn-solid") + btn("Retreats & Stay", "#retreats", "btn-line") + "</div>" +
+        "<p>Our meals are prepared by women, for women — with love, creativity, and care. Garden vegetables and herbs when they can, free-range meat and eggs, wholesome food. You do not lift a finger.</p>" +
+        "<p>Breakfast at your own rhythm — often chosen the evening before, and you can take it to your room. Lunch in the garden or on the deck above the surf. Dinner upstairs with the beach in summer; by the fire in winter.</p>" +
+        "<p>Overnight includes three meals, snacks, fruit, tea and coffee. A day includes lunch and snacks. Tell us what you cannot eat when you write. Vegetarian has no extra charge; gluten-free, dairy-free or vegan is a small extra per day.</p>" +
+        "<h2>The cookbook</h2>" +
+        "<p>Was there a dish you particularly liked? Favourite recipes from the table are in the Te Wāhi Ora cookbook — $20, plus $4 postage in New Zealand. All proceeds go to the Charitable Trust, and help them help other women.</p>" +
+        '<div class="actions">' + btn("Buy the cookbook", "#contact", "btn-clay") + btn("Book a stay", "#book", "btn-line") + "</div>" +
       "</section>"
     );
   },
@@ -712,21 +1063,36 @@ function bindFaq() {
   });
 }
 
+function scrollToId(id) {
+  var target = document.getElementById(id);
+  if (!target) return;
+  target.scrollIntoView({ behavior: "instant", block: "start" });
+}
+
+function bindJumps() {
+  document.querySelectorAll("[data-jump]").forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
+      scrollToId(el.getAttribute("data-jump"));
+    });
+  });
+}
+
 function bindStayTabs() {
-  var root = document.querySelector(".stay-tabs");
-  if (!root) return;
-  var tabs = root.querySelectorAll("[data-tab]");
-  var panels = root.querySelectorAll("[data-panel]");
-  tabs.forEach(function (tab) {
-    tab.addEventListener("click", function () {
-      var id = tab.getAttribute("data-tab");
-      tabs.forEach(function (t) {
-        var on = t === tab;
-        t.classList.toggle("is-on", on);
-        t.setAttribute("aria-selected", on ? "true" : "false");
-      });
-      panels.forEach(function (p) {
-        p.hidden = p.getAttribute("data-panel") !== id;
+  document.querySelectorAll(".stay-tabs").forEach(function (root) {
+    var tabs = root.querySelectorAll("[data-tab]");
+    var panels = root.querySelectorAll("[data-panel]");
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var id = tab.getAttribute("data-tab");
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle("is-on", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        panels.forEach(function (p) {
+          p.hidden = p.getAttribute("data-panel") !== id;
+        });
       });
     });
   });
@@ -740,9 +1106,10 @@ function render() {
   $("footer").innerHTML = footerHtml();
   var view = PAGES[id];
   $("main").innerHTML = view ? view() : PAGES.home();
-  $("main").className = id === "what-we-offer" ? "page-offer" : id === "home" ? "page-home" : "";
+  $("main").className = id === "what-we-offer" ? "page-offer" : id === "home" ? "page-home" : (id === "retreats" || id === "stay" ? "page-stay" : "");
   bindStayTabs();
   bindFaq();
+  bindJumps();
   document.title = (id === "home" ? "Home" : document.querySelector("#main h1").textContent) + " — Te Wāhi Ora";
   window.scrollTo(0, 0);
   $("nav").classList.remove("open");
