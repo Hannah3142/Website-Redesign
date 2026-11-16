@@ -16,8 +16,6 @@ Write the name **Te Wāhi Ora** with the macron. The logo itself does not have a
 | [Te-Wahi-Ora-brief.pdf](Te-Wahi-Ora-brief.pdf) | Original website brief / intake |
 | [Website-Initial-Content-and-Design-Direction-9-Sep-2026.pdf](Website-Initial-Content-and-Design-Direction-9-Sep-2026.pdf) | Jordan’s content and design direction (September 2026) |
 | [Brand-style-guide-outlined.pdf](Brand-style-guide-outlined.pdf) | Colour and logo (The Bespoke Designer) |
-| [still-open.md](still-open.md) | What is still open: unanswered questions, leftover meeting notes, booking and payment ideas |
-| [booking-proposal/index.html](booking-proposal/index.html) | Visual draft of a booking and payment idea (not decided — also summarised in still-open.md) |
 
 To view the preview on your own computer, open a terminal in this `handover` folder and run:
 
@@ -39,11 +37,14 @@ Other pages in the preview are still rough: About, Library, Support, Book, Hire,
 
 This preview is ordinary HTML, CSS and a little JavaScript. It is a picture of a site, so that WordPress can be built to match it — it is not a custom application, and it should not be turned into one.
 
-## People (so you know who to write to)
+## Still open
 
-- **Jordan Good** — the project contact. She chooses, or mixes, what goes forward. `jordangood2067@gmail.com`
-- **Harper Digital** — reviews the work, and would be the people to ask about WordPress and booking tools
-- **Hans** — please CC him on emails to Jordan or Harper (`23486@tgs.school.nz`)
-- **Hannah** — made this design preview as unpaid / learning work
-
-Public contact for the house (from Jordan’s answers): tewahiora@gmail.com · 022 078 5757 · landline 09 812 8775 (forwards to the mobile) · 129 Marine Parade North, Piha Beach, Auckland.
+- **Copy:** almost all of it will be rewritten. About will be rewritten — they can write it, or someone can draft for them to correct.
+- **Newsletter archive:** the newsletter is active (heading toward about monthly). Whether past issues should live on the website is still open.
+- **Cookbook:** Jordan’s written answer said digital; the live site still describes a printed book at $20 plus postage, proceeds to the Trust. Also still to discuss: “ask us” versus a small shop. Gift vouchers stay with Support; the cookbook stays with Nourishment.
+- **Photos:** they can supply a larger, more recent set.
+- **Booking tools:** they would like something easier than email-and-wait. Budget is open. Not decided.
+- **Look:** keep using images on purpose so the eye has somewhere to land. An earlier version felt too clean / too even.
+- **Support:** look into whether WordPress can simply do Women’s Healing Sanctuary-style extras (counting numbers, on-site donation, “adopt a cost,” a rolling donor banner). Not checked yet.
+- **Cancellation:** keep a short paragraph plus a link on the Book page itself, not only in the footer.
+- **Still to ask Jordan** (and double-check with Bev): how they want to handle trans people / wording, including anything in a FAQ.
