@@ -4,6 +4,16 @@
       "source": "/",
       "destination": "/handover/preview/index.html",
       "permanent": false
+    },
+    {
+      "source": "/deliverables/:path*",
+      "destination": "/archive/deliverables/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/clickable-sitemaps/:path*",
+      "destination": "/archive/clickable-sitemaps/:path*",
+      "permanent": false
     }
   ]
 }

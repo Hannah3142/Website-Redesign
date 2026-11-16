@@ -48,3 +48,5 @@ This preview is ordinary HTML, CSS and a little JavaScript. It is a picture of a
 - **Support:** look into whether WordPress can simply do Women’s Healing Sanctuary-style extras (counting numbers, on-site donation, “adopt a cost,” a rolling donor banner). Not checked yet.
 - **Cancellation:** keep a short paragraph plus a link on the Book page itself, not only in the footer.
 - **Still to ask Jordan** (and double-check with Bev): how they want to handle trans people / wording, including anything in a FAQ.
+
+Earlier sitemap options (A, B, C and older clickable prototypes) are in the repo’s [`archive/`](../archive/) folder. They are not this preview.
